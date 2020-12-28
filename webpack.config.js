@@ -29,7 +29,7 @@ module.exports = (env, argv) => {
     output: {
       path: path.resolve(__dirname, 'dist'),
       filename: '[name].js',
-      library: [ 'EditorJS' ],
+      library: [ 'Editor' ],
       libraryTarget: 'umd',
     },
 
