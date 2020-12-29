@@ -6,7 +6,10 @@ import { undo, redo, history } from "prosemirror-history"
 import { keymap } from "prosemirror-keymap"
 import { baseKeymap } from "prosemirror-commands"
 import {addListNodes} from "prosemirror-schema-list"
-import {exampleSetup} from "prosemirror-example-setup"
+import {exampleSetup} from "./example/setup/src/index"
+
+import HeroCard from './HeroCard';
+const heroCard = new HeroCard();
 
 export interface IStateConfig<S extends Schema = any> {
   schema?: S|null
@@ -36,10 +39,16 @@ class Editor {
     //     }
     //   }
     // })
+    console.log('schema', schema);
+    console.log('nodes', schema.spec.nodes);
     const mySchema = new Schema({
-      nodes: addListNodes(schema.spec.nodes, "paragraph block*", "block"),
+      nodes: addListNodes(schema.spec.nodes, "paragraph block*", "block").append({
+        hero_card: heroCard.schema
+      }),
       marks: schema.spec.marks
     })
+
+    console.log(mySchema);
 
     const state = EditorState.create({
       // schema: mySchema,

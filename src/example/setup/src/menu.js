@@ -42,6 +42,31 @@ function insertImageItem(nodeType) {
   })
 }
 
+function insertHeroCard(nodeType) {
+  return new MenuItem({
+    title: "Insert HeroCard",
+    label: "Hero",
+    enable(state) { return canInsert(state, nodeType) },
+    run(state, _, view) {
+      let {from, to} = state.selection, attrs = null
+      if (state.selection instanceof NodeSelection && state.selection.node.type == nodeType)
+        attrs = state.selection.node.attrs
+      openPrompt({
+        title: "Insert HeroCard",
+        fields: {
+          src: new TextField({label: "Location", required: true, value: attrs && attrs.src}),
+          title: new TextField({label: "Title", value: attrs && attrs.title}),
+          desc: new TextField({label: "Desc", value: attrs && attrs.desc}),
+        },
+        callback(attrs) {
+          view.dispatch(view.state.tr.replaceSelectionWith(nodeType.createAndFill(attrs)))
+          view.focus()
+        }
+      })
+    }
+  })
+}
+
 function cmdItem(cmd, options) {
   let passedOptions = {
     label: options.title,
@@ -214,9 +239,12 @@ export function buildMenuItems(schema) {
       run(state, dispatch) { dispatch(state.tr.replaceSelectionWith(hr.create())) }
     })
   }
+  if (type = schema.nodes.hero_card) {
+    r.insertHero = insertHeroCard(type)
+  }
 
   let cut = arr => arr.filter(x => x)
-  r.insertMenu = new Dropdown(cut([r.insertImage, r.insertHorizontalRule]), {label: "Insert"})
+  r.insertMenu = new Dropdown(cut([r.insertImage, r.insertHorizontalRule, r.insertHero]), {label: "Insert"})
   r.typeMenu = new Dropdown(cut([r.makeParagraph, r.makeCodeBlock, r.makeHead1 && new DropdownSubmenu(cut([
     r.makeHead1, r.makeHead2, r.makeHead3, r.makeHead4, r.makeHead5, r.makeHead6
   ]), {label: "Heading"})]), {label: "Type..."})

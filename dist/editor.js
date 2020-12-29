@@ -11,10 +11,10 @@
 return /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./node_modules/@babel/runtime/helpers/classCallCheck.js":
-/*!***************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/classCallCheck.js ***!
-  \***************************************************************/
+/***/ "./node_modules/_@babel_runtime@7.12.5@@babel/runtime/helpers/classCallCheck.js":
+/*!**************************************************************************************!*\
+  !*** ./node_modules/_@babel_runtime@7.12.5@@babel/runtime/helpers/classCallCheck.js ***!
+  \**************************************************************************************/
 /***/ ((module) => {
 
 function _classCallCheck(instance, Constructor) {
@@ -27,10 +27,36 @@ module.exports = _classCallCheck;
 
 /***/ }),
 
-/***/ "./node_modules/@babel/runtime/helpers/interopRequireDefault.js":
-/*!**********************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/interopRequireDefault.js ***!
-  \**********************************************************************/
+/***/ "./node_modules/_@babel_runtime@7.12.5@@babel/runtime/helpers/createClass.js":
+/*!***********************************************************************************!*\
+  !*** ./node_modules/_@babel_runtime@7.12.5@@babel/runtime/helpers/createClass.js ***!
+  \***********************************************************************************/
+/***/ ((module) => {
+
+function _defineProperties(target, props) {
+  for (var i = 0; i < props.length; i++) {
+    var descriptor = props[i];
+    descriptor.enumerable = descriptor.enumerable || false;
+    descriptor.configurable = true;
+    if ("value" in descriptor) descriptor.writable = true;
+    Object.defineProperty(target, descriptor.key, descriptor);
+  }
+}
+
+function _createClass(Constructor, protoProps, staticProps) {
+  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
+  if (staticProps) _defineProperties(Constructor, staticProps);
+  return Constructor;
+}
+
+module.exports = _createClass;
+
+/***/ }),
+
+/***/ "./node_modules/_@babel_runtime@7.12.5@@babel/runtime/helpers/interopRequireDefault.js":
+/*!*********************************************************************************************!*\
+  !*** ./node_modules/_@babel_runtime@7.12.5@@babel/runtime/helpers/interopRequireDefault.js ***!
+  \*********************************************************************************************/
 /***/ ((module) => {
 
 function _interopRequireDefault(obj) {
@@ -43,6 +69,84 @@ module.exports = _interopRequireDefault;
 
 /***/ }),
 
+/***/ "./src/HeroCard.ts":
+/*!*************************!*\
+  !*** ./src/HeroCard.ts ***!
+  \*************************/
+/***/ (function(module, exports, __webpack_require__) {
+
+var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function (global, factory) {
+  if (true) {
+    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [exports, __webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "./node_modules/_@babel_runtime@7.12.5@@babel/runtime/helpers/classCallCheck.js"), __webpack_require__(/*! @babel/runtime/helpers/createClass */ "./node_modules/_@babel_runtime@7.12.5@@babel/runtime/helpers/createClass.js"), __webpack_require__(/*! prosemirror-state */ "./node_modules/_prosemirror-state@1.3.3@prosemirror-state/dist/index.es.js")], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
+		__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
+		(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
+		__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+  } else { var mod; }
+})(typeof globalThis !== "undefined" ? globalThis : typeof self !== "undefined" ? self : this, function (_exports, _classCallCheck2, _createClass2, _prosemirrorState) {
+  "use strict";
+
+  var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/_@babel_runtime@7.12.5@@babel/runtime/helpers/interopRequireDefault.js");
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports["default"] = void 0;
+  _classCallCheck2 = _interopRequireDefault(_classCallCheck2);
+  _createClass2 = _interopRequireDefault(_createClass2);
+
+  var HeroPlugin = function HeroPlugin() {
+    return new _prosemirrorState.Plugin({
+      props: {}
+    });
+  };
+
+  var HeroCard = /*#__PURE__*/function () {
+    function HeroCard() {
+      (0, _classCallCheck2["default"])(this, HeroCard);
+    }
+
+    (0, _createClass2["default"])(HeroCard, [{
+      key: "schema",
+      get: function get() {
+        return {
+          type: 'hero_card',
+          content: 'inline*',
+          group: 'block',
+          attrs: {
+            src: {
+              "default": ''
+            },
+            title: {
+              "default": '在这输入标题'
+            },
+            desc: {
+              "default": '在这输入描述'
+            }
+          },
+          toDOM: function toDOM(node) {
+            return ['figure', {
+              'class': 'hero_card'
+            }, ['img', {
+              src: node.attrs.src
+            }], ['figcaption', node.attrs.title], ['figcaption', node.attrs.desc]];
+          }
+        };
+      }
+    }, {
+      key: "plugin",
+      get: function get() {
+        return HeroPlugin();
+      }
+    }]);
+    return HeroCard;
+  }();
+
+  var _default = HeroCard;
+  _exports["default"] = _default;
+});
+
+/***/ }),
+
 /***/ "./src/index.ts":
 /*!**********************!*\
   !*** ./src/index.ts ***!
@@ -51,21 +155,23 @@ module.exports = _interopRequireDefault;
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function (global, factory) {
   if (true) {
-    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [exports, __webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "./node_modules/@babel/runtime/helpers/classCallCheck.js"), __webpack_require__(/*! prosemirror-view */ "./node_modules/prosemirror-view/dist/index.es.js"), __webpack_require__(/*! prosemirror-state */ "./node_modules/prosemirror-state/dist/index.es.js"), __webpack_require__(/*! prosemirror-model */ "./node_modules/prosemirror-model/dist/index.es.js"), __webpack_require__(/*! prosemirror-schema-basic */ "./node_modules/prosemirror-schema-basic/dist/index.es.js"), __webpack_require__(/*! prosemirror-schema-list */ "./node_modules/prosemirror-schema-list/dist/index.es.js"), __webpack_require__(/*! prosemirror-example-setup */ "./node_modules/prosemirror-example-setup/dist/index.es.js")], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
+    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [exports, __webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "./node_modules/_@babel_runtime@7.12.5@@babel/runtime/helpers/classCallCheck.js"), __webpack_require__(/*! prosemirror-view */ "./node_modules/_prosemirror-view@1.16.4@prosemirror-view/dist/index.es.js"), __webpack_require__(/*! prosemirror-state */ "./node_modules/_prosemirror-state@1.3.3@prosemirror-state/dist/index.es.js"), __webpack_require__(/*! prosemirror-model */ "./node_modules/_prosemirror-model@1.13.1@prosemirror-model/dist/index.es.js"), __webpack_require__(/*! prosemirror-schema-basic */ "./node_modules/_prosemirror-schema-basic@1.1.2@prosemirror-schema-basic/dist/index.es.js"), __webpack_require__(/*! prosemirror-schema-list */ "./node_modules/_prosemirror-schema-list@1.1.4@prosemirror-schema-list/dist/index.es.js"), __webpack_require__(/*! ./example/setup/src/index */ "./src/example/setup/src/index.js"), __webpack_require__(/*! ./HeroCard */ "./src/HeroCard.ts")], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
 		__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
 		(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
 		__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
   } else { var mod; }
-})(typeof globalThis !== "undefined" ? globalThis : typeof self !== "undefined" ? self : this, function (_exports, _classCallCheck2, _prosemirrorView, _prosemirrorState, _prosemirrorModel, _prosemirrorSchemaBasic, _prosemirrorSchemaList, _prosemirrorExampleSetup) {
+})(typeof globalThis !== "undefined" ? globalThis : typeof self !== "undefined" ? self : this, function (_exports, _classCallCheck2, _prosemirrorView, _prosemirrorState, _prosemirrorModel, _prosemirrorSchemaBasic, _prosemirrorSchemaList, _index, _HeroCard) {
   "use strict";
 
-  var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/@babel/runtime/helpers/interopRequireDefault.js");
+  var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/_@babel_runtime@7.12.5@@babel/runtime/helpers/interopRequireDefault.js");
 
   Object.defineProperty(_exports, "__esModule", {
     value: true
   });
   _exports["default"] = void 0;
   _classCallCheck2 = _interopRequireDefault(_classCallCheck2);
+  _HeroCard = _interopRequireDefault(_HeroCard);
+  var heroCard = new _HeroCard["default"]();
 
   var Editor = function Editor(config) {
     var _this = this;
@@ -79,15 +185,20 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
     //   }
     // })
 
+    console.log('schema', _prosemirrorSchemaBasic.schema);
+    console.log('nodes', _prosemirrorSchemaBasic.schema.spec.nodes);
     var mySchema = new _prosemirrorModel.Schema({
-      nodes: (0, _prosemirrorSchemaList.addListNodes)(_prosemirrorSchemaBasic.schema.spec.nodes, "paragraph block*", "block"),
+      nodes: (0, _prosemirrorSchemaList.addListNodes)(_prosemirrorSchemaBasic.schema.spec.nodes, "paragraph block*", "block").append({
+        hero_card: heroCard.schema
+      }),
       marks: _prosemirrorSchemaBasic.schema.spec.marks
     });
+    console.log(mySchema);
 
     var state = _prosemirrorState.EditorState.create({
       // schema: mySchema,
       doc: _prosemirrorModel.DOMParser.fromSchema(mySchema).parse(document.querySelector("#content")),
-      plugins: (0, _prosemirrorExampleSetup.exampleSetup)({
+      plugins: (0, _index.exampleSetup)({
         schema: mySchema
       }) // plugins: [
       //   myPlugin,
@@ -125,10 +236,10 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 
 /***/ }),
 
-/***/ "./node_modules/crelt/index.es.js":
-/*!****************************************!*\
-  !*** ./node_modules/crelt/index.es.js ***!
-  \****************************************/
+/***/ "./node_modules/_crelt@1.0.5@crelt/index.es.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/_crelt@1.0.5@crelt/index.es.js ***!
+  \*****************************************************/
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -168,10 +279,10 @@ function add(elt, child) {
 
 /***/ }),
 
-/***/ "./node_modules/orderedmap/index.es.js":
-/*!*********************************************!*\
-  !*** ./node_modules/orderedmap/index.es.js ***!
-  \*********************************************/
+/***/ "./node_modules/_orderedmap@1.1.1@orderedmap/index.es.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/_orderedmap@1.1.1@orderedmap/index.es.js ***!
+  \***************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -314,10 +425,10 @@ var orderedmap = OrderedMap;
 
 /***/ }),
 
-/***/ "./node_modules/prosemirror-commands/dist/index.es.js":
-/*!************************************************************!*\
-  !*** ./node_modules/prosemirror-commands/dist/index.es.js ***!
-  \************************************************************/
+/***/ "./node_modules/_prosemirror-commands@1.1.4@prosemirror-commands/dist/index.es.js":
+/*!****************************************************************************************!*\
+  !*** ./node_modules/_prosemirror-commands@1.1.4@prosemirror-commands/dist/index.es.js ***!
+  \****************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -348,9 +459,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "toggleMark": () => /* binding */ toggleMark,
 /* harmony export */   "wrapIn": () => /* binding */ wrapIn
 /* harmony export */ });
-/* harmony import */ var prosemirror_transform__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! prosemirror-transform */ "./node_modules/prosemirror-transform/dist/index.es.js");
-/* harmony import */ var prosemirror_model__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prosemirror-model */ "./node_modules/prosemirror-model/dist/index.es.js");
-/* harmony import */ var prosemirror_state__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! prosemirror-state */ "./node_modules/prosemirror-state/dist/index.es.js");
+/* harmony import */ var prosemirror_transform__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! prosemirror-transform */ "./node_modules/_prosemirror-transform@1.2.8@prosemirror-transform/dist/index.es.js");
+/* harmony import */ var prosemirror_model__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prosemirror-model */ "./node_modules/_prosemirror-model@1.13.1@prosemirror-model/dist/index.es.js");
+/* harmony import */ var prosemirror_state__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! prosemirror-state */ "./node_modules/_prosemirror-state@1.3.3@prosemirror-state/dist/index.es.js");
 
 
 
@@ -1009,10 +1120,10 @@ var baseKeymap = mac ? macBaseKeymap : pcBaseKeymap;
 
 /***/ }),
 
-/***/ "./node_modules/prosemirror-dropcursor/dist/index.es.js":
-/*!**************************************************************!*\
-  !*** ./node_modules/prosemirror-dropcursor/dist/index.es.js ***!
-  \**************************************************************/
+/***/ "./node_modules/_prosemirror-dropcursor@1.3.2@prosemirror-dropcursor/dist/index.es.js":
+/*!********************************************************************************************!*\
+  !*** ./node_modules/_prosemirror-dropcursor@1.3.2@prosemirror-dropcursor/dist/index.es.js ***!
+  \********************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -1020,8 +1131,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "dropCursor": () => /* binding */ dropCursor
 /* harmony export */ });
-/* harmony import */ var prosemirror_state__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! prosemirror-state */ "./node_modules/prosemirror-state/dist/index.es.js");
-/* harmony import */ var prosemirror_transform__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prosemirror-transform */ "./node_modules/prosemirror-transform/dist/index.es.js");
+/* harmony import */ var prosemirror_state__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! prosemirror-state */ "./node_modules/_prosemirror-state@1.3.3@prosemirror-state/dist/index.es.js");
+/* harmony import */ var prosemirror_transform__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prosemirror-transform */ "./node_modules/_prosemirror-transform@1.2.8@prosemirror-transform/dist/index.es.js");
 
 
 
@@ -1163,633 +1274,10 @@ DropCursorView.prototype.dragleave = function dragleave (event) {
 
 /***/ }),
 
-/***/ "./node_modules/prosemirror-example-setup/dist/index.es.js":
-/*!*****************************************************************!*\
-  !*** ./node_modules/prosemirror-example-setup/dist/index.es.js ***!
-  \*****************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "buildInputRules": () => /* binding */ buildInputRules,
-/* harmony export */   "buildKeymap": () => /* binding */ buildKeymap,
-/* harmony export */   "buildMenuItems": () => /* binding */ buildMenuItems,
-/* harmony export */   "exampleSetup": () => /* binding */ exampleSetup
-/* harmony export */ });
-/* harmony import */ var prosemirror_keymap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! prosemirror-keymap */ "./node_modules/prosemirror-keymap/dist/index.es.js");
-/* harmony import */ var prosemirror_history__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prosemirror-history */ "./node_modules/prosemirror-history/dist/index.es.js");
-/* harmony import */ var prosemirror_commands__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! prosemirror-commands */ "./node_modules/prosemirror-commands/dist/index.es.js");
-/* harmony import */ var prosemirror_state__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! prosemirror-state */ "./node_modules/prosemirror-state/dist/index.es.js");
-/* harmony import */ var prosemirror_dropcursor__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! prosemirror-dropcursor */ "./node_modules/prosemirror-dropcursor/dist/index.es.js");
-/* harmony import */ var prosemirror_gapcursor__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! prosemirror-gapcursor */ "./node_modules/prosemirror-gapcursor/dist/index.es.js");
-/* harmony import */ var prosemirror_menu__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! prosemirror-menu */ "./node_modules/prosemirror-menu/dist/index.es.js");
-/* harmony import */ var prosemirror_schema_list__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! prosemirror-schema-list */ "./node_modules/prosemirror-schema-list/dist/index.es.js");
-/* harmony import */ var prosemirror_inputrules__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! prosemirror-inputrules */ "./node_modules/prosemirror-inputrules/dist/index.es.js");
-
-
-
-
-
-
-
-
-
-
-var prefix = "ProseMirror-prompt";
-
-function openPrompt(options) {
-  var wrapper = document.body.appendChild(document.createElement("div"));
-  wrapper.className = prefix;
-
-  var mouseOutside = function (e) { if (!wrapper.contains(e.target)) { close(); } };
-  setTimeout(function () { return window.addEventListener("mousedown", mouseOutside); }, 50);
-  var close = function () {
-    window.removeEventListener("mousedown", mouseOutside);
-    if (wrapper.parentNode) { wrapper.parentNode.removeChild(wrapper); }
-  };
-
-  var domFields = [];
-  for (var name in options.fields) { domFields.push(options.fields[name].render()); }
-
-  var submitButton = document.createElement("button");
-  submitButton.type = "submit";
-  submitButton.className = prefix + "-submit";
-  submitButton.textContent = "OK";
-  var cancelButton = document.createElement("button");
-  cancelButton.type = "button";
-  cancelButton.className = prefix + "-cancel";
-  cancelButton.textContent = "Cancel";
-  cancelButton.addEventListener("click", close);
-
-  var form = wrapper.appendChild(document.createElement("form"));
-  if (options.title) { form.appendChild(document.createElement("h5")).textContent = options.title; }
-  domFields.forEach(function (field) {
-    form.appendChild(document.createElement("div")).appendChild(field);
-  });
-  var buttons = form.appendChild(document.createElement("div"));
-  buttons.className = prefix + "-buttons";
-  buttons.appendChild(submitButton);
-  buttons.appendChild(document.createTextNode(" "));
-  buttons.appendChild(cancelButton);
-
-  var box = wrapper.getBoundingClientRect();
-  wrapper.style.top = ((window.innerHeight - box.height) / 2) + "px";
-  wrapper.style.left = ((window.innerWidth - box.width) / 2) + "px";
-
-  var submit = function () {
-    var params = getValues(options.fields, domFields);
-    if (params) {
-      close();
-      options.callback(params);
-    }
-  };
-
-  form.addEventListener("submit", function (e) {
-    e.preventDefault();
-    submit();
-  });
-
-  form.addEventListener("keydown", function (e) {
-    if (e.keyCode == 27) {
-      e.preventDefault();
-      close();
-    } else if (e.keyCode == 13 && !(e.ctrlKey || e.metaKey || e.shiftKey)) {
-      e.preventDefault();
-      submit();
-    } else if (e.keyCode == 9) {
-      window.setTimeout(function () {
-        if (!wrapper.contains(document.activeElement)) { close(); }
-      }, 500);
-    }
-  });
-
-  var input = form.elements[0];
-  if (input) { input.focus(); }
-}
-
-function getValues(fields, domFields) {
-  var result = Object.create(null), i = 0;
-  for (var name in fields) {
-    var field = fields[name], dom = domFields[i++];
-    var value = field.read(dom), bad = field.validate(value);
-    if (bad) {
-      reportInvalid(dom, bad);
-      return null
-    }
-    result[name] = field.clean(value);
-  }
-  return result
-}
-
-function reportInvalid(dom, message) {
-  // FIXME this is awful and needs a lot more work
-  var parent = dom.parentNode;
-  var msg = parent.appendChild(document.createElement("div"));
-  msg.style.left = (dom.offsetLeft + dom.offsetWidth + 2) + "px";
-  msg.style.top = (dom.offsetTop - 5) + "px";
-  msg.className = "ProseMirror-invalid";
-  msg.textContent = message;
-  setTimeout(function () { return parent.removeChild(msg); }, 1500);
-}
-
-// ::- The type of field that `FieldPrompt` expects to be passed to it.
-var Field = function Field(options) { this.options = options; };
-
-// render:: (state: EditorState, props: Object) → dom.Node
-// Render the field to the DOM. Should be implemented by all subclasses.
-
-// :: (dom.Node) → any
-// Read the field's value from its DOM node.
-Field.prototype.read = function read (dom) { return dom.value };
-
-// :: (any) → ?string
-// A field-type-specific validation function.
-Field.prototype.validateType = function validateType (_value) {};
-
-Field.prototype.validate = function validate (value) {
-  if (!value && this.options.required)
-    { return "Required field" }
-  return this.validateType(value) || (this.options.validate && this.options.validate(value))
-};
-
-Field.prototype.clean = function clean (value) {
-  return this.options.clean ? this.options.clean(value) : value
-};
-
-// ::- A field class for single-line text fields.
-var TextField = /*@__PURE__*/(function (Field) {
-  function TextField () {
-    Field.apply(this, arguments);
-  }
-
-  if ( Field ) TextField.__proto__ = Field;
-  TextField.prototype = Object.create( Field && Field.prototype );
-  TextField.prototype.constructor = TextField;
-
-  TextField.prototype.render = function render () {
-    var input = document.createElement("input");
-    input.type = "text";
-    input.placeholder = this.options.label;
-    input.value = this.options.value || "";
-    input.autocomplete = "off";
-    return input
-  };
-
-  return TextField;
-}(Field));
-
-// Helpers to create specific types of items
-
-function canInsert(state, nodeType) {
-  var $from = state.selection.$from;
-  for (var d = $from.depth; d >= 0; d--) {
-    var index = $from.index(d);
-    if ($from.node(d).canReplaceWith(index, index, nodeType)) { return true }
-  }
-  return false
-}
-
-function insertImageItem(nodeType) {
-  return new prosemirror_menu__WEBPACK_IMPORTED_MODULE_6__.MenuItem({
-    title: "Insert image",
-    label: "Image",
-    enable: function enable(state) { return canInsert(state, nodeType) },
-    run: function run(state, _, view) {
-      var ref = state.selection;
-      var from = ref.from;
-      var to = ref.to;
-      var attrs = null;
-      if (state.selection instanceof prosemirror_state__WEBPACK_IMPORTED_MODULE_3__.NodeSelection && state.selection.node.type == nodeType)
-        { attrs = state.selection.node.attrs; }
-      openPrompt({
-        title: "Insert image",
-        fields: {
-          src: new TextField({label: "Location", required: true, value: attrs && attrs.src}),
-          title: new TextField({label: "Title", value: attrs && attrs.title}),
-          alt: new TextField({label: "Description",
-                              value: attrs ? attrs.alt : state.doc.textBetween(from, to, " ")})
-        },
-        callback: function callback(attrs) {
-          view.dispatch(view.state.tr.replaceSelectionWith(nodeType.createAndFill(attrs)));
-          view.focus();
-        }
-      });
-    }
-  })
-}
-
-function cmdItem(cmd, options) {
-  var passedOptions = {
-    label: options.title,
-    run: cmd
-  };
-  for (var prop in options) { passedOptions[prop] = options[prop]; }
-  if ((!options.enable || options.enable === true) && !options.select)
-    { passedOptions[options.enable ? "enable" : "select"] = function (state) { return cmd(state); }; }
-
-  return new prosemirror_menu__WEBPACK_IMPORTED_MODULE_6__.MenuItem(passedOptions)
-}
-
-function markActive(state, type) {
-  var ref = state.selection;
-  var from = ref.from;
-  var $from = ref.$from;
-  var to = ref.to;
-  var empty = ref.empty;
-  if (empty) { return type.isInSet(state.storedMarks || $from.marks()) }
-  else { return state.doc.rangeHasMark(from, to, type) }
-}
-
-function markItem(markType, options) {
-  var passedOptions = {
-    active: function active(state) { return markActive(state, markType) },
-    enable: true
-  };
-  for (var prop in options) { passedOptions[prop] = options[prop]; }
-  return cmdItem((0,prosemirror_commands__WEBPACK_IMPORTED_MODULE_2__.toggleMark)(markType), passedOptions)
-}
-
-function linkItem(markType) {
-  return new prosemirror_menu__WEBPACK_IMPORTED_MODULE_6__.MenuItem({
-    title: "Add or remove link",
-    icon: prosemirror_menu__WEBPACK_IMPORTED_MODULE_6__.icons.link,
-    active: function active(state) { return markActive(state, markType) },
-    enable: function enable(state) { return !state.selection.empty },
-    run: function run(state, dispatch, view) {
-      if (markActive(state, markType)) {
-        (0,prosemirror_commands__WEBPACK_IMPORTED_MODULE_2__.toggleMark)(markType)(state, dispatch);
-        return true
-      }
-      openPrompt({
-        title: "Create a link",
-        fields: {
-          href: new TextField({
-            label: "Link target",
-            required: true
-          }),
-          title: new TextField({label: "Title"})
-        },
-        callback: function callback(attrs) {
-          (0,prosemirror_commands__WEBPACK_IMPORTED_MODULE_2__.toggleMark)(markType, attrs)(view.state, view.dispatch);
-          view.focus();
-        }
-      });
-    }
-  })
-}
-
-function wrapListItem(nodeType, options) {
-  return cmdItem((0,prosemirror_schema_list__WEBPACK_IMPORTED_MODULE_7__.wrapInList)(nodeType, options.attrs), options)
-}
-
-// :: (Schema) → Object
-// Given a schema, look for default mark and node types in it and
-// return an object with relevant menu items relating to those marks:
-//
-// **`toggleStrong`**`: MenuItem`
-//   : A menu item to toggle the [strong mark](#schema-basic.StrongMark).
-//
-// **`toggleEm`**`: MenuItem`
-//   : A menu item to toggle the [emphasis mark](#schema-basic.EmMark).
-//
-// **`toggleCode`**`: MenuItem`
-//   : A menu item to toggle the [code font mark](#schema-basic.CodeMark).
-//
-// **`toggleLink`**`: MenuItem`
-//   : A menu item to toggle the [link mark](#schema-basic.LinkMark).
-//
-// **`insertImage`**`: MenuItem`
-//   : A menu item to insert an [image](#schema-basic.Image).
-//
-// **`wrapBulletList`**`: MenuItem`
-//   : A menu item to wrap the selection in a [bullet list](#schema-list.BulletList).
-//
-// **`wrapOrderedList`**`: MenuItem`
-//   : A menu item to wrap the selection in an [ordered list](#schema-list.OrderedList).
-//
-// **`wrapBlockQuote`**`: MenuItem`
-//   : A menu item to wrap the selection in a [block quote](#schema-basic.BlockQuote).
-//
-// **`makeParagraph`**`: MenuItem`
-//   : A menu item to set the current textblock to be a normal
-//     [paragraph](#schema-basic.Paragraph).
-//
-// **`makeCodeBlock`**`: MenuItem`
-//   : A menu item to set the current textblock to be a
-//     [code block](#schema-basic.CodeBlock).
-//
-// **`makeHead[N]`**`: MenuItem`
-//   : Where _N_ is 1 to 6. Menu items to set the current textblock to
-//     be a [heading](#schema-basic.Heading) of level _N_.
-//
-// **`insertHorizontalRule`**`: MenuItem`
-//   : A menu item to insert a horizontal rule.
-//
-// The return value also contains some prefabricated menu elements and
-// menus, that you can use instead of composing your own menu from
-// scratch:
-//
-// **`insertMenu`**`: Dropdown`
-//   : A dropdown containing the `insertImage` and
-//     `insertHorizontalRule` items.
-//
-// **`typeMenu`**`: Dropdown`
-//   : A dropdown containing the items for making the current
-//     textblock a paragraph, code block, or heading.
-//
-// **`fullMenu`**`: [[MenuElement]]`
-//   : An array of arrays of menu elements for use as the full menu
-//     for, for example the [menu bar](https://github.com/prosemirror/prosemirror-menu#user-content-menubar).
-function buildMenuItems(schema) {
-  var r = {}, type;
-  if (type = schema.marks.strong)
-    { r.toggleStrong = markItem(type, {title: "Toggle strong style", icon: prosemirror_menu__WEBPACK_IMPORTED_MODULE_6__.icons.strong}); }
-  if (type = schema.marks.em)
-    { r.toggleEm = markItem(type, {title: "Toggle emphasis", icon: prosemirror_menu__WEBPACK_IMPORTED_MODULE_6__.icons.em}); }
-  if (type = schema.marks.code)
-    { r.toggleCode = markItem(type, {title: "Toggle code font", icon: prosemirror_menu__WEBPACK_IMPORTED_MODULE_6__.icons.code}); }
-  if (type = schema.marks.link)
-    { r.toggleLink = linkItem(type); }
-
-  if (type = schema.nodes.image)
-    { r.insertImage = insertImageItem(type); }
-  if (type = schema.nodes.bullet_list)
-    { r.wrapBulletList = wrapListItem(type, {
-      title: "Wrap in bullet list",
-      icon: prosemirror_menu__WEBPACK_IMPORTED_MODULE_6__.icons.bulletList
-    }); }
-  if (type = schema.nodes.ordered_list)
-    { r.wrapOrderedList = wrapListItem(type, {
-      title: "Wrap in ordered list",
-      icon: prosemirror_menu__WEBPACK_IMPORTED_MODULE_6__.icons.orderedList
-    }); }
-  if (type = schema.nodes.blockquote)
-    { r.wrapBlockQuote = (0,prosemirror_menu__WEBPACK_IMPORTED_MODULE_6__.wrapItem)(type, {
-      title: "Wrap in block quote",
-      icon: prosemirror_menu__WEBPACK_IMPORTED_MODULE_6__.icons.blockquote
-    }); }
-  if (type = schema.nodes.paragraph)
-    { r.makeParagraph = (0,prosemirror_menu__WEBPACK_IMPORTED_MODULE_6__.blockTypeItem)(type, {
-      title: "Change to paragraph",
-      label: "Plain"
-    }); }
-  if (type = schema.nodes.code_block)
-    { r.makeCodeBlock = (0,prosemirror_menu__WEBPACK_IMPORTED_MODULE_6__.blockTypeItem)(type, {
-      title: "Change to code block",
-      label: "Code"
-    }); }
-  if (type = schema.nodes.heading)
-    { for (var i = 1; i <= 10; i++)
-      { r["makeHead" + i] = (0,prosemirror_menu__WEBPACK_IMPORTED_MODULE_6__.blockTypeItem)(type, {
-        title: "Change to heading " + i,
-        label: "Level " + i,
-        attrs: {level: i}
-      }); } }
-  if (type = schema.nodes.horizontal_rule) {
-    var hr = type;
-    r.insertHorizontalRule = new prosemirror_menu__WEBPACK_IMPORTED_MODULE_6__.MenuItem({
-      title: "Insert horizontal rule",
-      label: "Horizontal rule",
-      enable: function enable(state) { return canInsert(state, hr) },
-      run: function run(state, dispatch) { dispatch(state.tr.replaceSelectionWith(hr.create())); }
-    });
-  }
-
-  var cut = function (arr) { return arr.filter(function (x) { return x; }); };
-  r.insertMenu = new prosemirror_menu__WEBPACK_IMPORTED_MODULE_6__.Dropdown(cut([r.insertImage, r.insertHorizontalRule]), {label: "Insert"});
-  r.typeMenu = new prosemirror_menu__WEBPACK_IMPORTED_MODULE_6__.Dropdown(cut([r.makeParagraph, r.makeCodeBlock, r.makeHead1 && new prosemirror_menu__WEBPACK_IMPORTED_MODULE_6__.DropdownSubmenu(cut([
-    r.makeHead1, r.makeHead2, r.makeHead3, r.makeHead4, r.makeHead5, r.makeHead6
-  ]), {label: "Heading"})]), {label: "Type..."});
-
-  r.inlineMenu = [cut([r.toggleStrong, r.toggleEm, r.toggleCode, r.toggleLink])];
-  r.blockMenu = [cut([r.wrapBulletList, r.wrapOrderedList, r.wrapBlockQuote, prosemirror_menu__WEBPACK_IMPORTED_MODULE_6__.joinUpItem,
-                      prosemirror_menu__WEBPACK_IMPORTED_MODULE_6__.liftItem, prosemirror_menu__WEBPACK_IMPORTED_MODULE_6__.selectParentNodeItem])];
-  r.fullMenu = r.inlineMenu.concat([[r.insertMenu, r.typeMenu]], [[prosemirror_menu__WEBPACK_IMPORTED_MODULE_6__.undoItem, prosemirror_menu__WEBPACK_IMPORTED_MODULE_6__.redoItem]], r.blockMenu);
-
-  return r
-}
-
-var mac = typeof navigator != "undefined" ? /Mac/.test(navigator.platform) : false;
-
-// :: (Schema, ?Object) → Object
-// Inspect the given schema looking for marks and nodes from the
-// basic schema, and if found, add key bindings related to them.
-// This will add:
-//
-// * **Mod-b** for toggling [strong](#schema-basic.StrongMark)
-// * **Mod-i** for toggling [emphasis](#schema-basic.EmMark)
-// * **Mod-`** for toggling [code font](#schema-basic.CodeMark)
-// * **Ctrl-Shift-0** for making the current textblock a paragraph
-// * **Ctrl-Shift-1** to **Ctrl-Shift-Digit6** for making the current
-//   textblock a heading of the corresponding level
-// * **Ctrl-Shift-Backslash** to make the current textblock a code block
-// * **Ctrl-Shift-8** to wrap the selection in an ordered list
-// * **Ctrl-Shift-9** to wrap the selection in a bullet list
-// * **Ctrl->** to wrap the selection in a block quote
-// * **Enter** to split a non-empty textblock in a list item while at
-//   the same time splitting the list item
-// * **Mod-Enter** to insert a hard break
-// * **Mod-_** to insert a horizontal rule
-// * **Backspace** to undo an input rule
-// * **Alt-ArrowUp** to `joinUp`
-// * **Alt-ArrowDown** to `joinDown`
-// * **Mod-BracketLeft** to `lift`
-// * **Escape** to `selectParentNode`
-//
-// You can suppress or map these bindings by passing a `mapKeys`
-// argument, which maps key names (say `"Mod-B"` to either `false`, to
-// remove the binding, or a new key name string.
-function buildKeymap(schema, mapKeys) {
-  var keys = {}, type;
-  function bind(key, cmd) {
-    if (mapKeys) {
-      var mapped = mapKeys[key];
-      if (mapped === false) { return }
-      if (mapped) { key = mapped; }
-    }
-    keys[key] = cmd;
-  }
-
-
-  bind("Mod-z", prosemirror_history__WEBPACK_IMPORTED_MODULE_1__.undo);
-  bind("Shift-Mod-z", prosemirror_history__WEBPACK_IMPORTED_MODULE_1__.redo);
-  bind("Backspace", prosemirror_inputrules__WEBPACK_IMPORTED_MODULE_8__.undoInputRule);
-  if (!mac) { bind("Mod-y", prosemirror_history__WEBPACK_IMPORTED_MODULE_1__.redo); }
-
-  bind("Alt-ArrowUp", prosemirror_commands__WEBPACK_IMPORTED_MODULE_2__.joinUp);
-  bind("Alt-ArrowDown", prosemirror_commands__WEBPACK_IMPORTED_MODULE_2__.joinDown);
-  bind("Mod-BracketLeft", prosemirror_commands__WEBPACK_IMPORTED_MODULE_2__.lift);
-  bind("Escape", prosemirror_commands__WEBPACK_IMPORTED_MODULE_2__.selectParentNode);
-
-  if (type = schema.marks.strong) {
-    bind("Mod-b", (0,prosemirror_commands__WEBPACK_IMPORTED_MODULE_2__.toggleMark)(type));
-    bind("Mod-B", (0,prosemirror_commands__WEBPACK_IMPORTED_MODULE_2__.toggleMark)(type));
-  }
-  if (type = schema.marks.em) {
-    bind("Mod-i", (0,prosemirror_commands__WEBPACK_IMPORTED_MODULE_2__.toggleMark)(type));
-    bind("Mod-I", (0,prosemirror_commands__WEBPACK_IMPORTED_MODULE_2__.toggleMark)(type));
-  }
-  if (type = schema.marks.code)
-    { bind("Mod-`", (0,prosemirror_commands__WEBPACK_IMPORTED_MODULE_2__.toggleMark)(type)); }
-
-  if (type = schema.nodes.bullet_list)
-    { bind("Shift-Ctrl-8", (0,prosemirror_schema_list__WEBPACK_IMPORTED_MODULE_7__.wrapInList)(type)); }
-  if (type = schema.nodes.ordered_list)
-    { bind("Shift-Ctrl-9", (0,prosemirror_schema_list__WEBPACK_IMPORTED_MODULE_7__.wrapInList)(type)); }
-  if (type = schema.nodes.blockquote)
-    { bind("Ctrl->", (0,prosemirror_commands__WEBPACK_IMPORTED_MODULE_2__.wrapIn)(type)); }
-  if (type = schema.nodes.hard_break) {
-    var br = type, cmd = (0,prosemirror_commands__WEBPACK_IMPORTED_MODULE_2__.chainCommands)(prosemirror_commands__WEBPACK_IMPORTED_MODULE_2__.exitCode, function (state, dispatch) {
-      dispatch(state.tr.replaceSelectionWith(br.create()).scrollIntoView());
-      return true
-    });
-    bind("Mod-Enter", cmd);
-    bind("Shift-Enter", cmd);
-    if (mac) { bind("Ctrl-Enter", cmd); }
-  }
-  if (type = schema.nodes.list_item) {
-    bind("Enter", (0,prosemirror_schema_list__WEBPACK_IMPORTED_MODULE_7__.splitListItem)(type));
-    bind("Mod-[", (0,prosemirror_schema_list__WEBPACK_IMPORTED_MODULE_7__.liftListItem)(type));
-    bind("Mod-]", (0,prosemirror_schema_list__WEBPACK_IMPORTED_MODULE_7__.sinkListItem)(type));
-  }
-  if (type = schema.nodes.paragraph)
-    { bind("Shift-Ctrl-0", (0,prosemirror_commands__WEBPACK_IMPORTED_MODULE_2__.setBlockType)(type)); }
-  if (type = schema.nodes.code_block)
-    { bind("Shift-Ctrl-\\", (0,prosemirror_commands__WEBPACK_IMPORTED_MODULE_2__.setBlockType)(type)); }
-  if (type = schema.nodes.heading)
-    { for (var i = 1; i <= 6; i++) { bind("Shift-Ctrl-" + i, (0,prosemirror_commands__WEBPACK_IMPORTED_MODULE_2__.setBlockType)(type, {level: i})); } }
-  if (type = schema.nodes.horizontal_rule) {
-    var hr = type;
-    bind("Mod-_", function (state, dispatch) {
-      dispatch(state.tr.replaceSelectionWith(hr.create()).scrollIntoView());
-      return true
-    });
-  }
-
-  return keys
-}
-
-// : (NodeType) → InputRule
-// Given a blockquote node type, returns an input rule that turns `"> "`
-// at the start of a textblock into a blockquote.
-function blockQuoteRule(nodeType) {
-  return (0,prosemirror_inputrules__WEBPACK_IMPORTED_MODULE_8__.wrappingInputRule)(/^\s*>\s$/, nodeType)
-}
-
-// : (NodeType) → InputRule
-// Given a list node type, returns an input rule that turns a number
-// followed by a dot at the start of a textblock into an ordered list.
-function orderedListRule(nodeType) {
-  return (0,prosemirror_inputrules__WEBPACK_IMPORTED_MODULE_8__.wrappingInputRule)(/^(\d+)\.\s$/, nodeType, function (match) { return ({order: +match[1]}); },
-                           function (match, node) { return node.childCount + node.attrs.order == +match[1]; })
-}
-
-// : (NodeType) → InputRule
-// Given a list node type, returns an input rule that turns a bullet
-// (dash, plush, or asterisk) at the start of a textblock into a
-// bullet list.
-function bulletListRule(nodeType) {
-  return (0,prosemirror_inputrules__WEBPACK_IMPORTED_MODULE_8__.wrappingInputRule)(/^\s*([-+*])\s$/, nodeType)
-}
-
-// : (NodeType) → InputRule
-// Given a code block node type, returns an input rule that turns a
-// textblock starting with three backticks into a code block.
-function codeBlockRule(nodeType) {
-  return (0,prosemirror_inputrules__WEBPACK_IMPORTED_MODULE_8__.textblockTypeInputRule)(/^```$/, nodeType)
-}
-
-// : (NodeType, number) → InputRule
-// Given a node type and a maximum level, creates an input rule that
-// turns up to that number of `#` characters followed by a space at
-// the start of a textblock into a heading whose level corresponds to
-// the number of `#` signs.
-function headingRule(nodeType, maxLevel) {
-  return (0,prosemirror_inputrules__WEBPACK_IMPORTED_MODULE_8__.textblockTypeInputRule)(new RegExp("^(#{1," + maxLevel + "})\\s$"),
-                                nodeType, function (match) { return ({level: match[1].length}); })
-}
-
-// : (Schema) → Plugin
-// A set of input rules for creating the basic block quotes, lists,
-// code blocks, and heading.
-function buildInputRules(schema) {
-  var rules = prosemirror_inputrules__WEBPACK_IMPORTED_MODULE_8__.smartQuotes.concat(prosemirror_inputrules__WEBPACK_IMPORTED_MODULE_8__.ellipsis, prosemirror_inputrules__WEBPACK_IMPORTED_MODULE_8__.emDash), type;
-  if (type = schema.nodes.blockquote) { rules.push(blockQuoteRule(type)); }
-  if (type = schema.nodes.ordered_list) { rules.push(orderedListRule(type)); }
-  if (type = schema.nodes.bullet_list) { rules.push(bulletListRule(type)); }
-  if (type = schema.nodes.code_block) { rules.push(codeBlockRule(type)); }
-  if (type = schema.nodes.heading) { rules.push(headingRule(type, 6)); }
-  return (0,prosemirror_inputrules__WEBPACK_IMPORTED_MODULE_8__.inputRules)({rules: rules})
-}
-
-// !! This module exports helper functions for deriving a set of basic
-// menu items, input rules, or key bindings from a schema. These
-// values need to know about the schema for two reasons—they need
-// access to specific instances of node and mark types, and they need
-// to know which of the node and mark types that they know about are
-// actually present in the schema.
-//
-// The `exampleSetup` plugin ties these together into a plugin that
-// will automatically enable this basic functionality in an editor.
-
-// :: (Object) → [Plugin]
-// A convenience plugin that bundles together a simple menu with basic
-// key bindings, input rules, and styling for the example schema.
-// Probably only useful for quickly setting up a passable
-// editor—you'll need more control over your settings in most
-// real-world situations.
-//
-//   options::- The following options are recognized:
-//
-//     schema:: Schema
-//     The schema to generate key bindings and menu items for.
-//
-//     mapKeys:: ?Object
-//     Can be used to [adjust](#example-setup.buildKeymap) the key bindings created.
-//
-//     menuBar:: ?bool
-//     Set to false to disable the menu bar.
-//
-//     history:: ?bool
-//     Set to false to disable the history plugin.
-//
-//     floatingMenu:: ?bool
-//     Set to false to make the menu bar non-floating.
-//
-//     menuContent:: [[MenuItem]]
-//     Can be used to override the menu content.
-function exampleSetup(options) {
-  var plugins = [
-    buildInputRules(options.schema),
-    (0,prosemirror_keymap__WEBPACK_IMPORTED_MODULE_0__.keymap)(buildKeymap(options.schema, options.mapKeys)),
-    (0,prosemirror_keymap__WEBPACK_IMPORTED_MODULE_0__.keymap)(prosemirror_commands__WEBPACK_IMPORTED_MODULE_2__.baseKeymap),
-    (0,prosemirror_dropcursor__WEBPACK_IMPORTED_MODULE_4__.dropCursor)(),
-    (0,prosemirror_gapcursor__WEBPACK_IMPORTED_MODULE_5__.gapCursor)()
-  ];
-  if (options.menuBar !== false)
-    { plugins.push((0,prosemirror_menu__WEBPACK_IMPORTED_MODULE_6__.menuBar)({floating: options.floatingMenu !== false,
-                          content: options.menuContent || buildMenuItems(options.schema).fullMenu})); }
-  if (options.history !== false)
-    { plugins.push((0,prosemirror_history__WEBPACK_IMPORTED_MODULE_1__.history)()); }
-
-  return plugins.concat(new prosemirror_state__WEBPACK_IMPORTED_MODULE_3__.Plugin({
-    props: {
-      attributes: {class: "ProseMirror-example-setup-style"}
-    }
-  }))
-}
-
-
-//# sourceMappingURL=index.es.js.map
-
-
-/***/ }),
-
-/***/ "./node_modules/prosemirror-gapcursor/dist/index.es.js":
-/*!*************************************************************!*\
-  !*** ./node_modules/prosemirror-gapcursor/dist/index.es.js ***!
-  \*************************************************************/
+/***/ "./node_modules/_prosemirror-gapcursor@1.1.5@prosemirror-gapcursor/dist/index.es.js":
+/*!******************************************************************************************!*\
+  !*** ./node_modules/_prosemirror-gapcursor@1.1.5@prosemirror-gapcursor/dist/index.es.js ***!
+  \******************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -1798,10 +1286,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "GapCursor": () => /* binding */ GapCursor,
 /* harmony export */   "gapCursor": () => /* binding */ gapCursor
 /* harmony export */ });
-/* harmony import */ var prosemirror_keymap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! prosemirror-keymap */ "./node_modules/prosemirror-keymap/dist/index.es.js");
-/* harmony import */ var prosemirror_state__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prosemirror-state */ "./node_modules/prosemirror-state/dist/index.es.js");
-/* harmony import */ var prosemirror_view__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! prosemirror-view */ "./node_modules/prosemirror-view/dist/index.es.js");
-/* harmony import */ var prosemirror_model__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! prosemirror-model */ "./node_modules/prosemirror-model/dist/index.es.js");
+/* harmony import */ var prosemirror_keymap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! prosemirror-keymap */ "./node_modules/_prosemirror-keymap@1.1.4@prosemirror-keymap/dist/index.es.js");
+/* harmony import */ var prosemirror_state__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prosemirror-state */ "./node_modules/_prosemirror-state@1.3.3@prosemirror-state/dist/index.es.js");
+/* harmony import */ var prosemirror_view__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! prosemirror-view */ "./node_modules/_prosemirror-view@1.16.4@prosemirror-view/dist/index.es.js");
+/* harmony import */ var prosemirror_model__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! prosemirror-model */ "./node_modules/_prosemirror-model@1.13.1@prosemirror-model/dist/index.es.js");
 
 
 
@@ -2004,10 +1492,10 @@ function drawGapCursor(state) {
 
 /***/ }),
 
-/***/ "./node_modules/prosemirror-history/dist/index.es.js":
-/*!***********************************************************!*\
-  !*** ./node_modules/prosemirror-history/dist/index.es.js ***!
-  \***********************************************************/
+/***/ "./node_modules/_prosemirror-history@1.1.3@prosemirror-history/dist/index.es.js":
+/*!**************************************************************************************!*\
+  !*** ./node_modules/_prosemirror-history@1.1.3@prosemirror-history/dist/index.es.js ***!
+  \**************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -2021,9 +1509,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "undo": () => /* binding */ undo,
 /* harmony export */   "undoDepth": () => /* binding */ undoDepth
 /* harmony export */ });
-/* harmony import */ var rope_sequence__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! rope-sequence */ "./node_modules/rope-sequence/dist/index.es.js");
-/* harmony import */ var prosemirror_transform__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prosemirror-transform */ "./node_modules/prosemirror-transform/dist/index.es.js");
-/* harmony import */ var prosemirror_state__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! prosemirror-state */ "./node_modules/prosemirror-state/dist/index.es.js");
+/* harmony import */ var rope_sequence__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! rope-sequence */ "./node_modules/_rope-sequence@1.3.2@rope-sequence/dist/index.es.js");
+/* harmony import */ var prosemirror_transform__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prosemirror-transform */ "./node_modules/_prosemirror-transform@1.2.8@prosemirror-transform/dist/index.es.js");
+/* harmony import */ var prosemirror_state__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! prosemirror-state */ "./node_modules/_prosemirror-state@1.3.3@prosemirror-state/dist/index.es.js");
 
 
 
@@ -2473,10 +1961,10 @@ function redoDepth(state) {
 
 /***/ }),
 
-/***/ "./node_modules/prosemirror-inputrules/dist/index.es.js":
-/*!**************************************************************!*\
-  !*** ./node_modules/prosemirror-inputrules/dist/index.es.js ***!
-  \**************************************************************/
+/***/ "./node_modules/_prosemirror-inputrules@1.1.3@prosemirror-inputrules/dist/index.es.js":
+/*!********************************************************************************************!*\
+  !*** ./node_modules/_prosemirror-inputrules@1.1.3@prosemirror-inputrules/dist/index.es.js ***!
+  \********************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -2495,8 +1983,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "undoInputRule": () => /* binding */ undoInputRule,
 /* harmony export */   "wrappingInputRule": () => /* binding */ wrappingInputRule
 /* harmony export */ });
-/* harmony import */ var prosemirror_state__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! prosemirror-state */ "./node_modules/prosemirror-state/dist/index.es.js");
-/* harmony import */ var prosemirror_transform__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prosemirror-transform */ "./node_modules/prosemirror-transform/dist/index.es.js");
+/* harmony import */ var prosemirror_state__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! prosemirror-state */ "./node_modules/_prosemirror-state@1.3.3@prosemirror-state/dist/index.es.js");
+/* harmony import */ var prosemirror_transform__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prosemirror-transform */ "./node_modules/_prosemirror-transform@1.2.8@prosemirror-transform/dist/index.es.js");
 
 
 
@@ -2678,10 +2166,10 @@ function textblockTypeInputRule(regexp, nodeType, getAttrs) {
 
 /***/ }),
 
-/***/ "./node_modules/prosemirror-keymap/dist/index.es.js":
-/*!**********************************************************!*\
-  !*** ./node_modules/prosemirror-keymap/dist/index.es.js ***!
-  \**********************************************************/
+/***/ "./node_modules/_prosemirror-keymap@1.1.4@prosemirror-keymap/dist/index.es.js":
+/*!************************************************************************************!*\
+  !*** ./node_modules/_prosemirror-keymap@1.1.4@prosemirror-keymap/dist/index.es.js ***!
+  \************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -2690,8 +2178,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "keydownHandler": () => /* binding */ keydownHandler,
 /* harmony export */   "keymap": () => /* binding */ keymap
 /* harmony export */ });
-/* harmony import */ var w3c_keyname__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! w3c-keyname */ "./node_modules/w3c-keyname/index.es.js");
-/* harmony import */ var prosemirror_state__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prosemirror-state */ "./node_modules/prosemirror-state/dist/index.es.js");
+/* harmony import */ var w3c_keyname__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! w3c-keyname */ "./node_modules/_w3c-keyname@2.2.4@w3c-keyname/index.es.js");
+/* harmony import */ var prosemirror_state__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prosemirror-state */ "./node_modules/_prosemirror-state@1.3.3@prosemirror-state/dist/index.es.js");
 
 
 
@@ -2801,10 +2289,10 @@ function keydownHandler(bindings) {
 
 /***/ }),
 
-/***/ "./node_modules/prosemirror-menu/dist/index.es.js":
-/*!********************************************************!*\
-  !*** ./node_modules/prosemirror-menu/dist/index.es.js ***!
-  \********************************************************/
+/***/ "./node_modules/_prosemirror-menu@1.1.4@prosemirror-menu/dist/index.es.js":
+/*!********************************************************************************!*\
+  !*** ./node_modules/_prosemirror-menu@1.1.4@prosemirror-menu/dist/index.es.js ***!
+  \********************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -2824,10 +2312,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "undoItem": () => /* binding */ undoItem,
 /* harmony export */   "wrapItem": () => /* binding */ wrapItem
 /* harmony export */ });
-/* harmony import */ var crelt__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! crelt */ "./node_modules/crelt/index.es.js");
-/* harmony import */ var prosemirror_commands__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prosemirror-commands */ "./node_modules/prosemirror-commands/dist/index.es.js");
-/* harmony import */ var prosemirror_history__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! prosemirror-history */ "./node_modules/prosemirror-history/dist/index.es.js");
-/* harmony import */ var prosemirror_state__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! prosemirror-state */ "./node_modules/prosemirror-state/dist/index.es.js");
+/* harmony import */ var crelt__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! crelt */ "./node_modules/_crelt@1.0.5@crelt/index.es.js");
+/* harmony import */ var prosemirror_commands__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prosemirror-commands */ "./node_modules/_prosemirror-commands@1.1.4@prosemirror-commands/dist/index.es.js");
+/* harmony import */ var prosemirror_history__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! prosemirror-history */ "./node_modules/_prosemirror-history@1.1.3@prosemirror-history/dist/index.es.js");
+/* harmony import */ var prosemirror_state__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! prosemirror-state */ "./node_modules/_prosemirror-state@1.3.3@prosemirror-state/dist/index.es.js");
 
 
 
@@ -3470,10 +2958,10 @@ function getAllWrapping(node) {
 
 /***/ }),
 
-/***/ "./node_modules/prosemirror-model/dist/index.es.js":
-/*!*********************************************************!*\
-  !*** ./node_modules/prosemirror-model/dist/index.es.js ***!
-  \*********************************************************/
+/***/ "./node_modules/_prosemirror-model@1.13.1@prosemirror-model/dist/index.es.js":
+/*!***********************************************************************************!*\
+  !*** ./node_modules/_prosemirror-model@1.13.1@prosemirror-model/dist/index.es.js ***!
+  \***********************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -3493,7 +2981,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "Schema": () => /* binding */ Schema,
 /* harmony export */   "Slice": () => /* binding */ Slice
 /* harmony export */ });
-/* harmony import */ var orderedmap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! orderedmap */ "./node_modules/orderedmap/index.es.js");
+/* harmony import */ var orderedmap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! orderedmap */ "./node_modules/_orderedmap@1.1.1@orderedmap/index.es.js");
 
 
 function findDiffStart(a, b, pos) {
@@ -6932,10 +6420,10 @@ function doc(options) {
 
 /***/ }),
 
-/***/ "./node_modules/prosemirror-schema-basic/dist/index.es.js":
-/*!****************************************************************!*\
-  !*** ./node_modules/prosemirror-schema-basic/dist/index.es.js ***!
-  \****************************************************************/
+/***/ "./node_modules/_prosemirror-schema-basic@1.1.2@prosemirror-schema-basic/dist/index.es.js":
+/*!************************************************************************************************!*\
+  !*** ./node_modules/_prosemirror-schema-basic@1.1.2@prosemirror-schema-basic/dist/index.es.js ***!
+  \************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -6945,7 +6433,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "nodes": () => /* binding */ nodes,
 /* harmony export */   "schema": () => /* binding */ schema
 /* harmony export */ });
-/* harmony import */ var prosemirror_model__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! prosemirror-model */ "./node_modules/prosemirror-model/dist/index.es.js");
+/* harmony import */ var prosemirror_model__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! prosemirror-model */ "./node_modules/_prosemirror-model@1.13.1@prosemirror-model/dist/index.es.js");
 
 
 var pDOM = ["p", 0], blockquoteDOM = ["blockquote", 0], hrDOM = ["hr"],
@@ -7117,10 +6605,10 @@ var schema = new prosemirror_model__WEBPACK_IMPORTED_MODULE_0__.Schema({nodes: n
 
 /***/ }),
 
-/***/ "./node_modules/prosemirror-schema-list/dist/index.es.js":
-/*!***************************************************************!*\
-  !*** ./node_modules/prosemirror-schema-list/dist/index.es.js ***!
-  \***************************************************************/
+/***/ "./node_modules/_prosemirror-schema-list@1.1.4@prosemirror-schema-list/dist/index.es.js":
+/*!**********************************************************************************************!*\
+  !*** ./node_modules/_prosemirror-schema-list@1.1.4@prosemirror-schema-list/dist/index.es.js ***!
+  \**********************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -7135,8 +6623,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "splitListItem": () => /* binding */ splitListItem,
 /* harmony export */   "wrapInList": () => /* binding */ wrapInList
 /* harmony export */ });
-/* harmony import */ var prosemirror_transform__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! prosemirror-transform */ "./node_modules/prosemirror-transform/dist/index.es.js");
-/* harmony import */ var prosemirror_model__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prosemirror-model */ "./node_modules/prosemirror-model/dist/index.es.js");
+/* harmony import */ var prosemirror_transform__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! prosemirror-transform */ "./node_modules/_prosemirror-transform@1.2.8@prosemirror-transform/dist/index.es.js");
+/* harmony import */ var prosemirror_model__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prosemirror-model */ "./node_modules/_prosemirror-model@1.13.1@prosemirror-model/dist/index.es.js");
 
 
 
@@ -7384,10 +6872,10 @@ function sinkListItem(itemType) {
 
 /***/ }),
 
-/***/ "./node_modules/prosemirror-state/dist/index.es.js":
-/*!*********************************************************!*\
-  !*** ./node_modules/prosemirror-state/dist/index.es.js ***!
-  \*********************************************************/
+/***/ "./node_modules/_prosemirror-state@1.3.3@prosemirror-state/dist/index.es.js":
+/*!**********************************************************************************!*\
+  !*** ./node_modules/_prosemirror-state@1.3.3@prosemirror-state/dist/index.es.js ***!
+  \**********************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -7403,8 +6891,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "TextSelection": () => /* binding */ TextSelection,
 /* harmony export */   "Transaction": () => /* binding */ Transaction
 /* harmony export */ });
-/* harmony import */ var prosemirror_model__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! prosemirror-model */ "./node_modules/prosemirror-model/dist/index.es.js");
-/* harmony import */ var prosemirror_transform__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prosemirror-transform */ "./node_modules/prosemirror-transform/dist/index.es.js");
+/* harmony import */ var prosemirror_model__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! prosemirror-model */ "./node_modules/_prosemirror-model@1.13.1@prosemirror-model/dist/index.es.js");
+/* harmony import */ var prosemirror_transform__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prosemirror-transform */ "./node_modules/_prosemirror-transform@1.2.8@prosemirror-transform/dist/index.es.js");
 
 
 
@@ -8546,10 +8034,10 @@ PluginKey.prototype.getState = function getState (state) { return state[this.key
 
 /***/ }),
 
-/***/ "./node_modules/prosemirror-transform/dist/index.es.js":
-/*!*************************************************************!*\
-  !*** ./node_modules/prosemirror-transform/dist/index.es.js ***!
-  \*************************************************************/
+/***/ "./node_modules/_prosemirror-transform@1.2.8@prosemirror-transform/dist/index.es.js":
+/*!******************************************************************************************!*\
+  !*** ./node_modules/_prosemirror-transform@1.2.8@prosemirror-transform/dist/index.es.js ***!
+  \******************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -8575,7 +8063,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "liftTarget": () => /* binding */ liftTarget,
 /* harmony export */   "replaceStep": () => /* binding */ replaceStep
 /* harmony export */ });
-/* harmony import */ var prosemirror_model__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! prosemirror-model */ "./node_modules/prosemirror-model/dist/index.es.js");
+/* harmony import */ var prosemirror_model__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! prosemirror-model */ "./node_modules/_prosemirror-model@1.13.1@prosemirror-model/dist/index.es.js");
 
 
 // Mappable:: interface
@@ -10227,10 +9715,10 @@ function coveredDepths($from, $to) {
 
 /***/ }),
 
-/***/ "./node_modules/prosemirror-view/dist/index.es.js":
-/*!********************************************************!*\
-  !*** ./node_modules/prosemirror-view/dist/index.es.js ***!
-  \********************************************************/
+/***/ "./node_modules/_prosemirror-view@1.16.4@prosemirror-view/dist/index.es.js":
+/*!*********************************************************************************!*\
+  !*** ./node_modules/_prosemirror-view@1.16.4@prosemirror-view/dist/index.es.js ***!
+  \*********************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -10243,9 +9731,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "__parseFromClipboard": () => /* binding */ parseFromClipboard,
 /* harmony export */   "__serializeForClipboard": () => /* binding */ serializeForClipboard
 /* harmony export */ });
-/* harmony import */ var prosemirror_state__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! prosemirror-state */ "./node_modules/prosemirror-state/dist/index.es.js");
-/* harmony import */ var prosemirror_model__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prosemirror-model */ "./node_modules/prosemirror-model/dist/index.es.js");
-/* harmony import */ var prosemirror_transform__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! prosemirror-transform */ "./node_modules/prosemirror-transform/dist/index.es.js");
+/* harmony import */ var prosemirror_state__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! prosemirror-state */ "./node_modules/_prosemirror-state@1.3.3@prosemirror-state/dist/index.es.js");
+/* harmony import */ var prosemirror_model__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prosemirror-model */ "./node_modules/_prosemirror-model@1.13.1@prosemirror-model/dist/index.es.js");
+/* harmony import */ var prosemirror_transform__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! prosemirror-transform */ "./node_modules/_prosemirror-transform@1.2.8@prosemirror-transform/dist/index.es.js");
 
 
 
@@ -15430,10 +14918,10 @@ function changedNodeViews(a, b) {
 
 /***/ }),
 
-/***/ "./node_modules/rope-sequence/dist/index.es.js":
-/*!*****************************************************!*\
-  !*** ./node_modules/rope-sequence/dist/index.es.js ***!
-  \*****************************************************/
+/***/ "./node_modules/_rope-sequence@1.3.2@rope-sequence/dist/index.es.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/_rope-sequence@1.3.2@rope-sequence/dist/index.es.js ***!
+  \**************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -15654,10 +15142,10 @@ var ropeSequence = RopeSequence;
 
 /***/ }),
 
-/***/ "./node_modules/w3c-keyname/index.es.js":
-/*!**********************************************!*\
-  !*** ./node_modules/w3c-keyname/index.es.js ***!
-  \**********************************************/
+/***/ "./node_modules/_w3c-keyname@2.2.4@w3c-keyname/index.es.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/_w3c-keyname@2.2.4@w3c-keyname/index.es.js ***!
+  \*****************************************************************/
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -15790,6 +15278,765 @@ function keyName(event) {
   if (name == "Right") name = "ArrowRight"
   if (name == "Down") name = "ArrowDown"
   return name
+}
+
+
+/***/ }),
+
+/***/ "./src/example/setup/src/index.js":
+/*!****************************************!*\
+  !*** ./src/example/setup/src/index.js ***!
+  \****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "buildMenuItems": () => /* reexport safe */ _menu__WEBPACK_IMPORTED_MODULE_7__.buildMenuItems,
+/* harmony export */   "buildKeymap": () => /* reexport safe */ _keymap__WEBPACK_IMPORTED_MODULE_8__.buildKeymap,
+/* harmony export */   "buildInputRules": () => /* reexport safe */ _inputrules__WEBPACK_IMPORTED_MODULE_9__.buildInputRules,
+/* harmony export */   "exampleSetup": () => /* binding */ exampleSetup
+/* harmony export */ });
+/* harmony import */ var prosemirror_keymap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! prosemirror-keymap */ "./node_modules/_prosemirror-keymap@1.1.4@prosemirror-keymap/dist/index.es.js");
+/* harmony import */ var prosemirror_history__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prosemirror-history */ "./node_modules/_prosemirror-history@1.1.3@prosemirror-history/dist/index.es.js");
+/* harmony import */ var prosemirror_commands__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! prosemirror-commands */ "./node_modules/_prosemirror-commands@1.1.4@prosemirror-commands/dist/index.es.js");
+/* harmony import */ var prosemirror_state__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! prosemirror-state */ "./node_modules/_prosemirror-state@1.3.3@prosemirror-state/dist/index.es.js");
+/* harmony import */ var prosemirror_dropcursor__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! prosemirror-dropcursor */ "./node_modules/_prosemirror-dropcursor@1.3.2@prosemirror-dropcursor/dist/index.es.js");
+/* harmony import */ var prosemirror_gapcursor__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! prosemirror-gapcursor */ "./node_modules/_prosemirror-gapcursor@1.1.5@prosemirror-gapcursor/dist/index.es.js");
+/* harmony import */ var prosemirror_menu__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! prosemirror-menu */ "./node_modules/_prosemirror-menu@1.1.4@prosemirror-menu/dist/index.es.js");
+/* harmony import */ var _menu__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./menu */ "./src/example/setup/src/menu.js");
+/* harmony import */ var _keymap__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./keymap */ "./src/example/setup/src/keymap.js");
+/* harmony import */ var _inputrules__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./inputrules */ "./src/example/setup/src/inputrules.js");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// !! This module exports helper functions for deriving a set of basic
+// menu items, input rules, or key bindings from a schema. These
+// values need to know about the schema for two reasons—they need
+// access to specific instances of node and mark types, and they need
+// to know which of the node and mark types that they know about are
+// actually present in the schema.
+//
+// The `exampleSetup` plugin ties these together into a plugin that
+// will automatically enable this basic functionality in an editor.
+
+// :: (Object) → [Plugin]
+// A convenience plugin that bundles together a simple menu with basic
+// key bindings, input rules, and styling for the example schema.
+// Probably only useful for quickly setting up a passable
+// editor—you'll need more control over your settings in most
+// real-world situations.
+//
+//   options::- The following options are recognized:
+//
+//     schema:: Schema
+//     The schema to generate key bindings and menu items for.
+//
+//     mapKeys:: ?Object
+//     Can be used to [adjust](#example-setup.buildKeymap) the key bindings created.
+//
+//     menuBar:: ?bool
+//     Set to false to disable the menu bar.
+//
+//     history:: ?bool
+//     Set to false to disable the history plugin.
+//
+//     floatingMenu:: ?bool
+//     Set to false to make the menu bar non-floating.
+//
+//     menuContent:: [[MenuItem]]
+//     Can be used to override the menu content.
+function exampleSetup(options) {
+  let plugins = [
+    (0,_inputrules__WEBPACK_IMPORTED_MODULE_9__.buildInputRules)(options.schema),
+    (0,prosemirror_keymap__WEBPACK_IMPORTED_MODULE_0__.keymap)((0,_keymap__WEBPACK_IMPORTED_MODULE_8__.buildKeymap)(options.schema, options.mapKeys)),
+    (0,prosemirror_keymap__WEBPACK_IMPORTED_MODULE_0__.keymap)(prosemirror_commands__WEBPACK_IMPORTED_MODULE_2__.baseKeymap),
+    (0,prosemirror_dropcursor__WEBPACK_IMPORTED_MODULE_4__.dropCursor)(),
+    (0,prosemirror_gapcursor__WEBPACK_IMPORTED_MODULE_5__.gapCursor)()
+  ]
+  if (options.menuBar !== false)
+    plugins.push((0,prosemirror_menu__WEBPACK_IMPORTED_MODULE_6__.menuBar)({floating: options.floatingMenu !== false,
+                          content: options.menuContent || (0,_menu__WEBPACK_IMPORTED_MODULE_7__.buildMenuItems)(options.schema).fullMenu}))
+  if (options.history !== false)
+    plugins.push((0,prosemirror_history__WEBPACK_IMPORTED_MODULE_1__.history)())
+
+  return plugins.concat(new prosemirror_state__WEBPACK_IMPORTED_MODULE_3__.Plugin({
+    props: {
+      attributes: {class: "ProseMirror-example-setup-style"}
+    }
+  }))
+}
+
+
+/***/ }),
+
+/***/ "./src/example/setup/src/inputrules.js":
+/*!*********************************************!*\
+  !*** ./src/example/setup/src/inputrules.js ***!
+  \*********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "blockQuoteRule": () => /* binding */ blockQuoteRule,
+/* harmony export */   "orderedListRule": () => /* binding */ orderedListRule,
+/* harmony export */   "bulletListRule": () => /* binding */ bulletListRule,
+/* harmony export */   "codeBlockRule": () => /* binding */ codeBlockRule,
+/* harmony export */   "headingRule": () => /* binding */ headingRule,
+/* harmony export */   "buildInputRules": () => /* binding */ buildInputRules
+/* harmony export */ });
+/* harmony import */ var prosemirror_inputrules__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! prosemirror-inputrules */ "./node_modules/_prosemirror-inputrules@1.1.3@prosemirror-inputrules/dist/index.es.js");
+
+
+// : (NodeType) → InputRule
+// Given a blockquote node type, returns an input rule that turns `"> "`
+// at the start of a textblock into a blockquote.
+function blockQuoteRule(nodeType) {
+  return (0,prosemirror_inputrules__WEBPACK_IMPORTED_MODULE_0__.wrappingInputRule)(/^\s*>\s$/, nodeType)
+}
+
+// : (NodeType) → InputRule
+// Given a list node type, returns an input rule that turns a number
+// followed by a dot at the start of a textblock into an ordered list.
+function orderedListRule(nodeType) {
+  return (0,prosemirror_inputrules__WEBPACK_IMPORTED_MODULE_0__.wrappingInputRule)(/^(\d+)\.\s$/, nodeType, match => ({order: +match[1]}),
+                           (match, node) => node.childCount + node.attrs.order == +match[1])
+}
+
+// : (NodeType) → InputRule
+// Given a list node type, returns an input rule that turns a bullet
+// (dash, plush, or asterisk) at the start of a textblock into a
+// bullet list.
+function bulletListRule(nodeType) {
+  return (0,prosemirror_inputrules__WEBPACK_IMPORTED_MODULE_0__.wrappingInputRule)(/^\s*([-+*])\s$/, nodeType)
+}
+
+// : (NodeType) → InputRule
+// Given a code block node type, returns an input rule that turns a
+// textblock starting with three backticks into a code block.
+function codeBlockRule(nodeType) {
+  return (0,prosemirror_inputrules__WEBPACK_IMPORTED_MODULE_0__.textblockTypeInputRule)(/^```$/, nodeType)
+}
+
+// : (NodeType, number) → InputRule
+// Given a node type and a maximum level, creates an input rule that
+// turns up to that number of `#` characters followed by a space at
+// the start of a textblock into a heading whose level corresponds to
+// the number of `#` signs.
+function headingRule(nodeType, maxLevel) {
+  return (0,prosemirror_inputrules__WEBPACK_IMPORTED_MODULE_0__.textblockTypeInputRule)(new RegExp("^(#{1," + maxLevel + "})\\s$"),
+                                nodeType, match => ({level: match[1].length}))
+}
+
+// : (Schema) → Plugin
+// A set of input rules for creating the basic block quotes, lists,
+// code blocks, and heading.
+function buildInputRules(schema) {
+  let rules = prosemirror_inputrules__WEBPACK_IMPORTED_MODULE_0__.smartQuotes.concat(prosemirror_inputrules__WEBPACK_IMPORTED_MODULE_0__.ellipsis, prosemirror_inputrules__WEBPACK_IMPORTED_MODULE_0__.emDash), type
+  if (type = schema.nodes.blockquote) rules.push(blockQuoteRule(type))
+  if (type = schema.nodes.ordered_list) rules.push(orderedListRule(type))
+  if (type = schema.nodes.bullet_list) rules.push(bulletListRule(type))
+  if (type = schema.nodes.code_block) rules.push(codeBlockRule(type))
+  if (type = schema.nodes.heading) rules.push(headingRule(type, 6))
+  return (0,prosemirror_inputrules__WEBPACK_IMPORTED_MODULE_0__.inputRules)({rules})
+}
+
+
+/***/ }),
+
+/***/ "./src/example/setup/src/keymap.js":
+/*!*****************************************!*\
+  !*** ./src/example/setup/src/keymap.js ***!
+  \*****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "buildKeymap": () => /* binding */ buildKeymap
+/* harmony export */ });
+/* harmony import */ var prosemirror_commands__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! prosemirror-commands */ "./node_modules/_prosemirror-commands@1.1.4@prosemirror-commands/dist/index.es.js");
+/* harmony import */ var prosemirror_schema_list__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prosemirror-schema-list */ "./node_modules/_prosemirror-schema-list@1.1.4@prosemirror-schema-list/dist/index.es.js");
+/* harmony import */ var prosemirror_history__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! prosemirror-history */ "./node_modules/_prosemirror-history@1.1.3@prosemirror-history/dist/index.es.js");
+/* harmony import */ var prosemirror_inputrules__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! prosemirror-inputrules */ "./node_modules/_prosemirror-inputrules@1.1.3@prosemirror-inputrules/dist/index.es.js");
+
+
+
+
+
+const mac = typeof navigator != "undefined" ? /Mac/.test(navigator.platform) : false
+
+// :: (Schema, ?Object) → Object
+// Inspect the given schema looking for marks and nodes from the
+// basic schema, and if found, add key bindings related to them.
+// This will add:
+//
+// * **Mod-b** for toggling [strong](#schema-basic.StrongMark)
+// * **Mod-i** for toggling [emphasis](#schema-basic.EmMark)
+// * **Mod-`** for toggling [code font](#schema-basic.CodeMark)
+// * **Ctrl-Shift-0** for making the current textblock a paragraph
+// * **Ctrl-Shift-1** to **Ctrl-Shift-Digit6** for making the current
+//   textblock a heading of the corresponding level
+// * **Ctrl-Shift-Backslash** to make the current textblock a code block
+// * **Ctrl-Shift-8** to wrap the selection in an ordered list
+// * **Ctrl-Shift-9** to wrap the selection in a bullet list
+// * **Ctrl->** to wrap the selection in a block quote
+// * **Enter** to split a non-empty textblock in a list item while at
+//   the same time splitting the list item
+// * **Mod-Enter** to insert a hard break
+// * **Mod-_** to insert a horizontal rule
+// * **Backspace** to undo an input rule
+// * **Alt-ArrowUp** to `joinUp`
+// * **Alt-ArrowDown** to `joinDown`
+// * **Mod-BracketLeft** to `lift`
+// * **Escape** to `selectParentNode`
+//
+// You can suppress or map these bindings by passing a `mapKeys`
+// argument, which maps key names (say `"Mod-B"` to either `false`, to
+// remove the binding, or a new key name string.
+function buildKeymap(schema, mapKeys) {
+  let keys = {}, type
+  function bind(key, cmd) {
+    if (mapKeys) {
+      let mapped = mapKeys[key]
+      if (mapped === false) return
+      if (mapped) key = mapped
+    }
+    keys[key] = cmd
+  }
+
+
+  bind("Mod-z", prosemirror_history__WEBPACK_IMPORTED_MODULE_2__.undo)
+  bind("Shift-Mod-z", prosemirror_history__WEBPACK_IMPORTED_MODULE_2__.redo)
+  bind("Backspace", prosemirror_inputrules__WEBPACK_IMPORTED_MODULE_3__.undoInputRule)
+  if (!mac) bind("Mod-y", prosemirror_history__WEBPACK_IMPORTED_MODULE_2__.redo)
+
+  bind("Alt-ArrowUp", prosemirror_commands__WEBPACK_IMPORTED_MODULE_0__.joinUp)
+  bind("Alt-ArrowDown", prosemirror_commands__WEBPACK_IMPORTED_MODULE_0__.joinDown)
+  bind("Mod-BracketLeft", prosemirror_commands__WEBPACK_IMPORTED_MODULE_0__.lift)
+  bind("Escape", prosemirror_commands__WEBPACK_IMPORTED_MODULE_0__.selectParentNode)
+
+  if (type = schema.marks.strong) {
+    bind("Mod-b", (0,prosemirror_commands__WEBPACK_IMPORTED_MODULE_0__.toggleMark)(type))
+    bind("Mod-B", (0,prosemirror_commands__WEBPACK_IMPORTED_MODULE_0__.toggleMark)(type))
+  }
+  if (type = schema.marks.em) {
+    bind("Mod-i", (0,prosemirror_commands__WEBPACK_IMPORTED_MODULE_0__.toggleMark)(type))
+    bind("Mod-I", (0,prosemirror_commands__WEBPACK_IMPORTED_MODULE_0__.toggleMark)(type))
+  }
+  if (type = schema.marks.code)
+    bind("Mod-`", (0,prosemirror_commands__WEBPACK_IMPORTED_MODULE_0__.toggleMark)(type))
+
+  if (type = schema.nodes.bullet_list)
+    bind("Shift-Ctrl-8", (0,prosemirror_schema_list__WEBPACK_IMPORTED_MODULE_1__.wrapInList)(type))
+  if (type = schema.nodes.ordered_list)
+    bind("Shift-Ctrl-9", (0,prosemirror_schema_list__WEBPACK_IMPORTED_MODULE_1__.wrapInList)(type))
+  if (type = schema.nodes.blockquote)
+    bind("Ctrl->", (0,prosemirror_commands__WEBPACK_IMPORTED_MODULE_0__.wrapIn)(type))
+  if (type = schema.nodes.hard_break) {
+    let br = type, cmd = (0,prosemirror_commands__WEBPACK_IMPORTED_MODULE_0__.chainCommands)(prosemirror_commands__WEBPACK_IMPORTED_MODULE_0__.exitCode, (state, dispatch) => {
+      dispatch(state.tr.replaceSelectionWith(br.create()).scrollIntoView())
+      return true
+    })
+    bind("Mod-Enter", cmd)
+    bind("Shift-Enter", cmd)
+    if (mac) bind("Ctrl-Enter", cmd)
+  }
+  if (type = schema.nodes.list_item) {
+    bind("Enter", (0,prosemirror_schema_list__WEBPACK_IMPORTED_MODULE_1__.splitListItem)(type))
+    bind("Mod-[", (0,prosemirror_schema_list__WEBPACK_IMPORTED_MODULE_1__.liftListItem)(type))
+    bind("Mod-]", (0,prosemirror_schema_list__WEBPACK_IMPORTED_MODULE_1__.sinkListItem)(type))
+  }
+  if (type = schema.nodes.paragraph)
+    bind("Shift-Ctrl-0", (0,prosemirror_commands__WEBPACK_IMPORTED_MODULE_0__.setBlockType)(type))
+  if (type = schema.nodes.code_block)
+    bind("Shift-Ctrl-\\", (0,prosemirror_commands__WEBPACK_IMPORTED_MODULE_0__.setBlockType)(type))
+  if (type = schema.nodes.heading)
+    for (let i = 1; i <= 6; i++) bind("Shift-Ctrl-" + i, (0,prosemirror_commands__WEBPACK_IMPORTED_MODULE_0__.setBlockType)(type, {level: i}))
+  if (type = schema.nodes.horizontal_rule) {
+    let hr = type
+    bind("Mod-_", (state, dispatch) => {
+      dispatch(state.tr.replaceSelectionWith(hr.create()).scrollIntoView())
+      return true
+    })
+  }
+
+  return keys
+}
+
+
+/***/ }),
+
+/***/ "./src/example/setup/src/menu.js":
+/*!***************************************!*\
+  !*** ./src/example/setup/src/menu.js ***!
+  \***************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "buildMenuItems": () => /* binding */ buildMenuItems
+/* harmony export */ });
+/* harmony import */ var prosemirror_menu__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! prosemirror-menu */ "./node_modules/_prosemirror-menu@1.1.4@prosemirror-menu/dist/index.es.js");
+/* harmony import */ var prosemirror_state__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prosemirror-state */ "./node_modules/_prosemirror-state@1.3.3@prosemirror-state/dist/index.es.js");
+/* harmony import */ var prosemirror_commands__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! prosemirror-commands */ "./node_modules/_prosemirror-commands@1.1.4@prosemirror-commands/dist/index.es.js");
+/* harmony import */ var prosemirror_schema_list__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! prosemirror-schema-list */ "./node_modules/_prosemirror-schema-list@1.1.4@prosemirror-schema-list/dist/index.es.js");
+/* harmony import */ var _prompt__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./prompt */ "./src/example/setup/src/prompt.js");
+
+
+
+
+
+
+// Helpers to create specific types of items
+
+function canInsert(state, nodeType) {
+  let $from = state.selection.$from
+  for (let d = $from.depth; d >= 0; d--) {
+    let index = $from.index(d)
+    if ($from.node(d).canReplaceWith(index, index, nodeType)) return true
+  }
+  return false
+}
+
+function insertImageItem(nodeType) {
+  return new prosemirror_menu__WEBPACK_IMPORTED_MODULE_0__.MenuItem({
+    title: "Insert image",
+    label: "Image",
+    enable(state) { return canInsert(state, nodeType) },
+    run(state, _, view) {
+      let {from, to} = state.selection, attrs = null
+      if (state.selection instanceof prosemirror_state__WEBPACK_IMPORTED_MODULE_1__.NodeSelection && state.selection.node.type == nodeType)
+        attrs = state.selection.node.attrs
+      ;(0,_prompt__WEBPACK_IMPORTED_MODULE_4__.openPrompt)({
+        title: "Insert image",
+        fields: {
+          src: new _prompt__WEBPACK_IMPORTED_MODULE_4__.TextField({label: "Location", required: true, value: attrs && attrs.src}),
+          title: new _prompt__WEBPACK_IMPORTED_MODULE_4__.TextField({label: "Title", value: attrs && attrs.title}),
+          alt: new _prompt__WEBPACK_IMPORTED_MODULE_4__.TextField({label: "Description",
+                              value: attrs ? attrs.alt : state.doc.textBetween(from, to, " ")})
+        },
+        callback(attrs) {
+          view.dispatch(view.state.tr.replaceSelectionWith(nodeType.createAndFill(attrs)))
+          view.focus()
+        }
+      })
+    }
+  })
+}
+
+function insertHeroCard(nodeType) {
+  return new prosemirror_menu__WEBPACK_IMPORTED_MODULE_0__.MenuItem({
+    title: "Insert HeroCard",
+    label: "Hero",
+    enable(state) { return canInsert(state, nodeType) },
+    run(state, _, view) {
+      let {from, to} = state.selection, attrs = null
+      if (state.selection instanceof prosemirror_state__WEBPACK_IMPORTED_MODULE_1__.NodeSelection && state.selection.node.type == nodeType)
+        attrs = state.selection.node.attrs
+      ;(0,_prompt__WEBPACK_IMPORTED_MODULE_4__.openPrompt)({
+        title: "Insert HeroCard",
+        fields: {
+          src: new _prompt__WEBPACK_IMPORTED_MODULE_4__.TextField({label: "Location", required: true, value: attrs && attrs.src}),
+          title: new _prompt__WEBPACK_IMPORTED_MODULE_4__.TextField({label: "Title", value: attrs && attrs.title}),
+          desc: new _prompt__WEBPACK_IMPORTED_MODULE_4__.TextField({label: "Desc", value: attrs && attrs.desc}),
+        },
+        callback(attrs) {
+          view.dispatch(view.state.tr.replaceSelectionWith(nodeType.createAndFill(attrs)))
+          view.focus()
+        }
+      })
+    }
+  })
+}
+
+function cmdItem(cmd, options) {
+  let passedOptions = {
+    label: options.title,
+    run: cmd
+  }
+  for (let prop in options) passedOptions[prop] = options[prop]
+  if ((!options.enable || options.enable === true) && !options.select)
+    passedOptions[options.enable ? "enable" : "select"] = state => cmd(state)
+
+  return new prosemirror_menu__WEBPACK_IMPORTED_MODULE_0__.MenuItem(passedOptions)
+}
+
+function markActive(state, type) {
+  let {from, $from, to, empty} = state.selection
+  if (empty) return type.isInSet(state.storedMarks || $from.marks())
+  else return state.doc.rangeHasMark(from, to, type)
+}
+
+function markItem(markType, options) {
+  let passedOptions = {
+    active(state) { return markActive(state, markType) },
+    enable: true
+  }
+  for (let prop in options) passedOptions[prop] = options[prop]
+  return cmdItem((0,prosemirror_commands__WEBPACK_IMPORTED_MODULE_2__.toggleMark)(markType), passedOptions)
+}
+
+function linkItem(markType) {
+  return new prosemirror_menu__WEBPACK_IMPORTED_MODULE_0__.MenuItem({
+    title: "Add or remove link",
+    icon: prosemirror_menu__WEBPACK_IMPORTED_MODULE_0__.icons.link,
+    active(state) { return markActive(state, markType) },
+    enable(state) { return !state.selection.empty },
+    run(state, dispatch, view) {
+      if (markActive(state, markType)) {
+        (0,prosemirror_commands__WEBPACK_IMPORTED_MODULE_2__.toggleMark)(markType)(state, dispatch)
+        return true
+      }
+      (0,_prompt__WEBPACK_IMPORTED_MODULE_4__.openPrompt)({
+        title: "Create a link",
+        fields: {
+          href: new _prompt__WEBPACK_IMPORTED_MODULE_4__.TextField({
+            label: "Link target",
+            required: true
+          }),
+          title: new _prompt__WEBPACK_IMPORTED_MODULE_4__.TextField({label: "Title"})
+        },
+        callback(attrs) {
+          (0,prosemirror_commands__WEBPACK_IMPORTED_MODULE_2__.toggleMark)(markType, attrs)(view.state, view.dispatch)
+          view.focus()
+        }
+      })
+    }
+  })
+}
+
+function wrapListItem(nodeType, options) {
+  return cmdItem((0,prosemirror_schema_list__WEBPACK_IMPORTED_MODULE_3__.wrapInList)(nodeType, options.attrs), options)
+}
+
+// :: (Schema) → Object
+// Given a schema, look for default mark and node types in it and
+// return an object with relevant menu items relating to those marks:
+//
+// **`toggleStrong`**`: MenuItem`
+//   : A menu item to toggle the [strong mark](#schema-basic.StrongMark).
+//
+// **`toggleEm`**`: MenuItem`
+//   : A menu item to toggle the [emphasis mark](#schema-basic.EmMark).
+//
+// **`toggleCode`**`: MenuItem`
+//   : A menu item to toggle the [code font mark](#schema-basic.CodeMark).
+//
+// **`toggleLink`**`: MenuItem`
+//   : A menu item to toggle the [link mark](#schema-basic.LinkMark).
+//
+// **`insertImage`**`: MenuItem`
+//   : A menu item to insert an [image](#schema-basic.Image).
+//
+// **`wrapBulletList`**`: MenuItem`
+//   : A menu item to wrap the selection in a [bullet list](#schema-list.BulletList).
+//
+// **`wrapOrderedList`**`: MenuItem`
+//   : A menu item to wrap the selection in an [ordered list](#schema-list.OrderedList).
+//
+// **`wrapBlockQuote`**`: MenuItem`
+//   : A menu item to wrap the selection in a [block quote](#schema-basic.BlockQuote).
+//
+// **`makeParagraph`**`: MenuItem`
+//   : A menu item to set the current textblock to be a normal
+//     [paragraph](#schema-basic.Paragraph).
+//
+// **`makeCodeBlock`**`: MenuItem`
+//   : A menu item to set the current textblock to be a
+//     [code block](#schema-basic.CodeBlock).
+//
+// **`makeHead[N]`**`: MenuItem`
+//   : Where _N_ is 1 to 6. Menu items to set the current textblock to
+//     be a [heading](#schema-basic.Heading) of level _N_.
+//
+// **`insertHorizontalRule`**`: MenuItem`
+//   : A menu item to insert a horizontal rule.
+//
+// The return value also contains some prefabricated menu elements and
+// menus, that you can use instead of composing your own menu from
+// scratch:
+//
+// **`insertMenu`**`: Dropdown`
+//   : A dropdown containing the `insertImage` and
+//     `insertHorizontalRule` items.
+//
+// **`typeMenu`**`: Dropdown`
+//   : A dropdown containing the items for making the current
+//     textblock a paragraph, code block, or heading.
+//
+// **`fullMenu`**`: [[MenuElement]]`
+//   : An array of arrays of menu elements for use as the full menu
+//     for, for example the [menu bar](https://github.com/prosemirror/prosemirror-menu#user-content-menubar).
+function buildMenuItems(schema) {
+  let r = {}, type
+  if (type = schema.marks.strong)
+    r.toggleStrong = markItem(type, {title: "Toggle strong style", icon: prosemirror_menu__WEBPACK_IMPORTED_MODULE_0__.icons.strong})
+  if (type = schema.marks.em)
+    r.toggleEm = markItem(type, {title: "Toggle emphasis", icon: prosemirror_menu__WEBPACK_IMPORTED_MODULE_0__.icons.em})
+  if (type = schema.marks.code)
+    r.toggleCode = markItem(type, {title: "Toggle code font", icon: prosemirror_menu__WEBPACK_IMPORTED_MODULE_0__.icons.code})
+  if (type = schema.marks.link)
+    r.toggleLink = linkItem(type)
+
+  if (type = schema.nodes.image)
+    r.insertImage = insertImageItem(type)
+  if (type = schema.nodes.bullet_list)
+    r.wrapBulletList = wrapListItem(type, {
+      title: "Wrap in bullet list",
+      icon: prosemirror_menu__WEBPACK_IMPORTED_MODULE_0__.icons.bulletList
+    })
+  if (type = schema.nodes.ordered_list)
+    r.wrapOrderedList = wrapListItem(type, {
+      title: "Wrap in ordered list",
+      icon: prosemirror_menu__WEBPACK_IMPORTED_MODULE_0__.icons.orderedList
+    })
+  if (type = schema.nodes.blockquote)
+    r.wrapBlockQuote = (0,prosemirror_menu__WEBPACK_IMPORTED_MODULE_0__.wrapItem)(type, {
+      title: "Wrap in block quote",
+      icon: prosemirror_menu__WEBPACK_IMPORTED_MODULE_0__.icons.blockquote
+    })
+  if (type = schema.nodes.paragraph)
+    r.makeParagraph = (0,prosemirror_menu__WEBPACK_IMPORTED_MODULE_0__.blockTypeItem)(type, {
+      title: "Change to paragraph",
+      label: "Plain"
+    })
+  if (type = schema.nodes.code_block)
+    r.makeCodeBlock = (0,prosemirror_menu__WEBPACK_IMPORTED_MODULE_0__.blockTypeItem)(type, {
+      title: "Change to code block",
+      label: "Code"
+    })
+  if (type = schema.nodes.heading)
+    for (let i = 1; i <= 10; i++)
+      r["makeHead" + i] = (0,prosemirror_menu__WEBPACK_IMPORTED_MODULE_0__.blockTypeItem)(type, {
+        title: "Change to heading " + i,
+        label: "Level " + i,
+        attrs: {level: i}
+      })
+  if (type = schema.nodes.horizontal_rule) {
+    let hr = type
+    r.insertHorizontalRule = new prosemirror_menu__WEBPACK_IMPORTED_MODULE_0__.MenuItem({
+      title: "Insert horizontal rule",
+      label: "Horizontal rule",
+      enable(state) { return canInsert(state, hr) },
+      run(state, dispatch) { dispatch(state.tr.replaceSelectionWith(hr.create())) }
+    })
+  }
+  if (type = schema.nodes.hero_card) {
+    r.insertHero = insertHeroCard(type)
+  }
+
+  let cut = arr => arr.filter(x => x)
+  r.insertMenu = new prosemirror_menu__WEBPACK_IMPORTED_MODULE_0__.Dropdown(cut([r.insertImage, r.insertHorizontalRule, r.insertHero]), {label: "Insert"})
+  r.typeMenu = new prosemirror_menu__WEBPACK_IMPORTED_MODULE_0__.Dropdown(cut([r.makeParagraph, r.makeCodeBlock, r.makeHead1 && new prosemirror_menu__WEBPACK_IMPORTED_MODULE_0__.DropdownSubmenu(cut([
+    r.makeHead1, r.makeHead2, r.makeHead3, r.makeHead4, r.makeHead5, r.makeHead6
+  ]), {label: "Heading"})]), {label: "Type..."})
+
+  r.inlineMenu = [cut([r.toggleStrong, r.toggleEm, r.toggleCode, r.toggleLink])]
+  r.blockMenu = [cut([r.wrapBulletList, r.wrapOrderedList, r.wrapBlockQuote, prosemirror_menu__WEBPACK_IMPORTED_MODULE_0__.joinUpItem,
+                      prosemirror_menu__WEBPACK_IMPORTED_MODULE_0__.liftItem, prosemirror_menu__WEBPACK_IMPORTED_MODULE_0__.selectParentNodeItem])]
+  r.fullMenu = r.inlineMenu.concat([[r.insertMenu, r.typeMenu]], [[prosemirror_menu__WEBPACK_IMPORTED_MODULE_0__.undoItem, prosemirror_menu__WEBPACK_IMPORTED_MODULE_0__.redoItem]], r.blockMenu)
+
+  return r
+}
+
+
+/***/ }),
+
+/***/ "./src/example/setup/src/prompt.js":
+/*!*****************************************!*\
+  !*** ./src/example/setup/src/prompt.js ***!
+  \*****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "openPrompt": () => /* binding */ openPrompt,
+/* harmony export */   "Field": () => /* binding */ Field,
+/* harmony export */   "TextField": () => /* binding */ TextField,
+/* harmony export */   "SelectField": () => /* binding */ SelectField
+/* harmony export */ });
+const prefix = "ProseMirror-prompt"
+
+function openPrompt(options) {
+  let wrapper = document.body.appendChild(document.createElement("div"))
+  wrapper.className = prefix
+
+  let mouseOutside = e => { if (!wrapper.contains(e.target)) close() }
+  setTimeout(() => window.addEventListener("mousedown", mouseOutside), 50)
+  let close = () => {
+    window.removeEventListener("mousedown", mouseOutside)
+    if (wrapper.parentNode) wrapper.parentNode.removeChild(wrapper)
+  }
+
+  let domFields = []
+  for (let name in options.fields) domFields.push(options.fields[name].render())
+
+  let submitButton = document.createElement("button")
+  submitButton.type = "submit"
+  submitButton.className = prefix + "-submit"
+  submitButton.textContent = "OK"
+  let cancelButton = document.createElement("button")
+  cancelButton.type = "button"
+  cancelButton.className = prefix + "-cancel"
+  cancelButton.textContent = "Cancel"
+  cancelButton.addEventListener("click", close)
+
+  let form = wrapper.appendChild(document.createElement("form"))
+  if (options.title) form.appendChild(document.createElement("h5")).textContent = options.title
+  domFields.forEach(field => {
+    form.appendChild(document.createElement("div")).appendChild(field)
+  })
+  let buttons = form.appendChild(document.createElement("div"))
+  buttons.className = prefix + "-buttons"
+  buttons.appendChild(submitButton)
+  buttons.appendChild(document.createTextNode(" "))
+  buttons.appendChild(cancelButton)
+
+  let box = wrapper.getBoundingClientRect()
+  wrapper.style.top = ((window.innerHeight - box.height) / 2) + "px"
+  wrapper.style.left = ((window.innerWidth - box.width) / 2) + "px"
+
+  let submit = () => {
+    let params = getValues(options.fields, domFields)
+    if (params) {
+      close()
+      options.callback(params)
+    }
+  }
+
+  form.addEventListener("submit", e => {
+    e.preventDefault()
+    submit()
+  })
+
+  form.addEventListener("keydown", e => {
+    if (e.keyCode == 27) {
+      e.preventDefault()
+      close()
+    } else if (e.keyCode == 13 && !(e.ctrlKey || e.metaKey || e.shiftKey)) {
+      e.preventDefault()
+      submit()
+    } else if (e.keyCode == 9) {
+      window.setTimeout(() => {
+        if (!wrapper.contains(document.activeElement)) close()
+      }, 500)
+    }
+  })
+
+  let input = form.elements[0]
+  if (input) input.focus()
+}
+
+function getValues(fields, domFields) {
+  let result = Object.create(null), i = 0
+  for (let name in fields) {
+    let field = fields[name], dom = domFields[i++]
+    let value = field.read(dom), bad = field.validate(value)
+    if (bad) {
+      reportInvalid(dom, bad)
+      return null
+    }
+    result[name] = field.clean(value)
+  }
+  return result
+}
+
+function reportInvalid(dom, message) {
+  // FIXME this is awful and needs a lot more work
+  let parent = dom.parentNode
+  let msg = parent.appendChild(document.createElement("div"))
+  msg.style.left = (dom.offsetLeft + dom.offsetWidth + 2) + "px"
+  msg.style.top = (dom.offsetTop - 5) + "px"
+  msg.className = "ProseMirror-invalid"
+  msg.textContent = message
+  setTimeout(() => parent.removeChild(msg), 1500)
+}
+
+// ::- The type of field that `FieldPrompt` expects to be passed to it.
+class Field {
+  // :: (Object)
+  // Create a field with the given options. Options support by all
+  // field types are:
+  //
+  // **`value`**`: ?any`
+  //   : The starting value for the field.
+  //
+  // **`label`**`: string`
+  //   : The label for the field.
+  //
+  // **`required`**`: ?bool`
+  //   : Whether the field is required.
+  //
+  // **`validate`**`: ?(any) → ?string`
+  //   : A function to validate the given value. Should return an
+  //     error message if it is not valid.
+  constructor(options) { this.options = options }
+
+  // render:: (state: EditorState, props: Object) → dom.Node
+  // Render the field to the DOM. Should be implemented by all subclasses.
+
+  // :: (dom.Node) → any
+  // Read the field's value from its DOM node.
+  read(dom) { return dom.value }
+
+  // :: (any) → ?string
+  // A field-type-specific validation function.
+  validateType(_value) {}
+
+  validate(value) {
+    if (!value && this.options.required)
+      return "Required field"
+    return this.validateType(value) || (this.options.validate && this.options.validate(value))
+  }
+
+  clean(value) {
+    return this.options.clean ? this.options.clean(value) : value
+  }
+}
+
+// ::- A field class for single-line text fields.
+class TextField extends Field {
+  render() {
+    let input = document.createElement("input")
+    input.type = "text"
+    input.placeholder = this.options.label
+    input.value = this.options.value || ""
+    input.autocomplete = "off"
+    return input
+  }
+}
+
+
+// ::- A field class for dropdown fields based on a plain `<select>`
+// tag. Expects an option `options`, which should be an array of
+// `{value: string, label: string}` objects, or a function taking a
+// `ProseMirror` instance and returning such an array.
+class SelectField extends Field {
+  render() {
+    let select = document.createElement("select")
+    this.options.options.forEach(o => {
+      let opt = select.appendChild(document.createElement("option"))
+      opt.value = o.value
+      opt.selected = o.value == this.options.value
+      opt.label = o.label
+    })
+    return select
+  }
 }
 
 
