@@ -40,7 +40,8 @@ const webpackConfig = {
         test: /\.css$/,
         exclude: /node_modules/,
         use: [
-          'postcss-loader',
+          'style-loader',
+          'css-loader',
         ],
       },
       {

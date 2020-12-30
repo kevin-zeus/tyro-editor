@@ -1,7 +1,13 @@
 import { EditorView } from 'prosemirror-view';
 import { EditorState, Selection, Plugin } from 'prosemirror-state';
 import { Node, Schema, Mark } from 'prosemirror-model';
-import { schema } from 'prosemirror-schema-basic';
+import { baseKeymap } from 'prosemirror-commands';
+import { keymap } from 'prosemirror-keymap';
+import { history, undo, redo } from 'prosemirror-history';
+
+import SchemaFactory from './Schema';
+
+import './style/index.css'
 
 export interface IStateConfig<S extends Schema = any> {
   schema?: S|null
@@ -11,8 +17,8 @@ export interface IStateConfig<S extends Schema = any> {
   plugins?: Plugin[]|null
 }
 
-export interface IEditorProps {
-  exten
+export type TEditorConfig = {
+  extensions: []
   element: HTMLElement
   onChange: (doc: Node) => void
 }
@@ -21,21 +27,35 @@ class Editor {
   editorContainer: HTMLElement
   view: EditorView
 
-  constructor(config: IEditorProps) {
+  constructor(config: TEditorConfig) {
     console.log('editor view =====>', config);
-
     if (!config.element) {
       throw new Error('element prop have be a html element');
     }
+    if (!config.extensions) {
+      throw new Error('extensions can not be undefined');
+    }
 
     this.editorContainer = config.element;
+    const schemaFactory = new SchemaFactory(config.extensions);
+    const schema = schemaFactory.getSchema();
+
+    const state = EditorState.create({
+      schema,
+      plugins: [
+        history(),
+        keymap(baseKeymap),
+        keymap({'Mod-z': undo, 'Mod-y': redo })
+      ]
+    })
+
     this.view = new EditorView(this.editorContainer, {
-      state: EditorState.create({schema}),
+      state,
       dispatchTransaction: (transaction) => {
         const { state, transactions } = this.view.state.applyTransaction(transaction);
         this.view.updateState(state);
         if (transactions.some((tr) => tr.docChanged)) {
-          config.onChange(state.doc); // 外部暴露doc的变化
+          config.onChange(state.doc.toJSON()); // 外部暴露doc的变化
         }
       },
     });
