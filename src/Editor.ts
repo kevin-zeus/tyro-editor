@@ -5,7 +5,10 @@ import { baseKeymap } from 'prosemirror-commands';
 import { keymap } from 'prosemirror-keymap';
 import { history, undo, redo } from 'prosemirror-history';
 
-import SchemaFactory from './Schema';
+import { getWrapElement } from './utils';
+import SchemaFactory from './utils/SchemaFactory';
+
+import { BlockMenu } from './components/Menu';
 
 import './style/index.css'
 
@@ -25,6 +28,7 @@ export type TEditorConfig = {
 
 class Editor {
   editorContainer: HTMLElement
+  wrapElement: HTMLElement
   view: EditorView
 
   constructor(config: TEditorConfig) {
@@ -36,7 +40,10 @@ class Editor {
       throw new Error('extensions can not be undefined');
     }
 
+    // 编辑器容器DOM初始化
     this.editorContainer = config.element;
+    this.wrapElement = getWrapElement(this.editorContainer);
+
     const schemaFactory = new SchemaFactory(config.extensions);
     const schema = schemaFactory.getSchema();
 
@@ -49,7 +56,7 @@ class Editor {
       ]
     })
 
-    this.view = new EditorView(this.editorContainer, {
+    this.view = new EditorView(this.wrapElement, {
       state,
       dispatchTransaction: (transaction) => {
         const { state, transactions } = this.view.state.applyTransaction(transaction);
@@ -59,6 +66,11 @@ class Editor {
         }
       },
     });
+
+    // 菜单初始化
+    const blockMenu = new BlockMenu(this.view, config.extensions);
+    this.wrapElement.appendChild(blockMenu.wrapper);
+
     console.log('view ====>', this.view);
   }
 }

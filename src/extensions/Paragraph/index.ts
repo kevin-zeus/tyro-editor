@@ -1,6 +1,7 @@
-import Extension, { TExtensionOptions } from './Extension';
+import { TExtensionOptions } from '../Extension';
+import BlockExtension from '../BlockExtension';
 
-export default class Paragraph extends Extension {
+export default class Paragraph extends BlockExtension {
   constructor(options: TExtensionOptions) {
     super(options);
   }
@@ -17,5 +18,4 @@ export default class Paragraph extends Extension {
       toDOM() { return ['p', 0] }
     }
   }
-
 }

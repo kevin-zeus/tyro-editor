@@ -1,8 +1,9 @@
-import Extension, { TExtensionOptions } from './Extension';
+import { markActive } from '../../utils';
+import { TExtensionOptions } from '../Extension';
+import MarkExtension from '../MarkExtension';
+import { toggleMark } from 'prosemirror-commands';
 
-export default class Strong extends Extension {
-  type = 'mark'
-
+export default class Blod extends MarkExtension {
   constructor(options: TExtensionOptions) {
     super(options);
   }
@@ -12,7 +13,7 @@ export default class Strong extends Extension {
       return this.customSchema;
     }
     return {
-      type: 'strong',
+      type: 'bold',
       group: 'mark',
       parseDOM: [
         { tag: "strong" },
@@ -21,6 +22,14 @@ export default class Strong extends Extension {
       ],
       toDOM() { return ['b', 0] }
     }
+  }
+
+  active(state) {
+    return markActive(state.schema.marks.bold)(state);
+  }
+
+  onClick(state, dispatch) {
+    toggleMark(state.schema.marks.bold)(state, dispatch);
   }
 
 }

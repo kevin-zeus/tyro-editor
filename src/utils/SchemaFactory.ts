@@ -1,5 +1,5 @@
 import { Schema } from 'prosemirror-model';
-import Extension from './extensions/Extension';
+import Extension from '../extensions/Extension';
 
 export const baseNodes = {
   doc: {
@@ -34,7 +34,7 @@ export default class SchemaFactory {
       if (extension.type === 'mark') {
         marks[extension.schema.type] = extension.schema;
       }
-      if (extension.type === 'node') {
+      if (extension.type === 'block') {
         nodes[extension.schema.type] = extension.schema;
       }
     });

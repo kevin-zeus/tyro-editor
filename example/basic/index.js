@@ -1,6 +1,8 @@
 /* eslint-disable no-undef */
 import Editor from '../../src/Editor';
-import { Paragraph, Strong } from '../../src/extensions/index';
+import { Paragraph, Bold } from '../../src/extensions/index';
+
+import './style.css'
 
 const editorView = new Editor({
   element: document.getElementById('editor'),
@@ -9,7 +11,7 @@ const editorView = new Editor({
   },
   extensions: [
     new Paragraph(),
-    new Strong,
+    new Bold(),
   ],
 });
 console.log(editorView);

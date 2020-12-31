@@ -30,7 +30,7 @@ export default class Extension {
     }
   }
 
-  type: string = 'node'
+  type: string
   name: string
   customName?: string
   customIcon?: any
