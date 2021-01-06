@@ -1,13 +1,14 @@
-import crelt from 'crelt';
-import { EditorView } from 'prosemirror-view';
+import crelt from 'crelt'
+import { EditorView } from 'prosemirror-view'
 
 const prefix = 'TyroEditor-menu';
 
 export interface IMenuItemSpec {
   class?: string
   css?: string
-  title: string|Function
-  icon: string
+  title?: string|Function
+  icon?: string
+  label?: string
   render?(view):HTMLElement
   run(state, dispatch, view, event): void
   select?(state): any
@@ -28,8 +29,8 @@ export default class MenuItem {
       ? spec.render(view)
       : crelt(
         'button',
-        { 'class': 'btn' },
-        crelt('i', { 'class': `fa fa-${spec.icon}` })
+        { 'class': 'TyroEditor-btn' },
+        crelt('i', { 'class': `fa ${spec.icon}` })
       );
     if (!dom) throw new Error('MenuItem whitout icon or render property');
     if (spec.title) {
@@ -41,8 +42,9 @@ export default class MenuItem {
 
     dom.addEventListener('mousedown', e => {
       e.preventDefault();
-      if (!dom.classList.contains(prefix + '-disabled')) {
+      if (!dom.classList.contains(prefix + '-disabled')) { // 菜单项未被禁用
         spec.run(view.state, view.dispatch, view, e);
+        update(view.state);
       }
     });
 

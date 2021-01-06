@@ -2,24 +2,23 @@
   outline: none;
   font-size: 1rem;
 }
-.TyroEditor-blockmenu-wrapper {
+.TyroEditor-blockmenu-wrapper,
+.TyroEditor-balloonmenu-wrapper {
   position: absolute;
   top: 4px;
   background-color: #fafafa;
   border: 1px solid #c4c4c4;
   transition: all 0.3s;
 }
-.TyroEditor-blockmenu-wrapper .TyroEditor-blockmenu {
-  width: 400px;
-  height: 1.8rem;
-  line-height: 1.8rem;
+.TyroEditor-blockmenu-wrapper .TyroEditor-blockmenu,
+.TyroEditor-balloonmenu-wrapper .TyroEditor-balloonmenu {
+  max-width: 388px;
+  height: 1.6rem;
+  line-height: 1.6rem;
   display: flex;
   flex-flow: row;
   align-items: center;
   padding: 4px;
-}
-.TyroEditor-blockmenu-wrapper .plus {
-  position: absolute;
 }
 .TyroEditor-btn {
   outline: none;
@@ -33,9 +32,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-right: 4px;
+}
+.TyroEditor-btn:last-child {
+  margin-right: 0;
 }
 .TyroEditor-btn:hover,
-.TyroEditor-btn:active {
+.TyroEditor-btn:active,
+.TyroEditor-btn.TyroEditor-menu-active {
   background-color: #DEDEDE;
 }
 .TyroEditor-btn.active {

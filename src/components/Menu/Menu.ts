@@ -9,14 +9,12 @@ export type TPostion = {
 }
 
 export default class Menu {
-  type: string
-  rect: DOMRect
-  pos: TPostion
-  selection: Selection
-  isShow: boolean
+  editorView: EditorView
+  wrapper: HTMLElement
+  menu: HTMLElement
 
-  constructor(view: EditorView, extensions: Extension[]) {
-
+  constructor(editorView: EditorView) {
+    this.editorView = editorView
   }
 
   updatePos() {}

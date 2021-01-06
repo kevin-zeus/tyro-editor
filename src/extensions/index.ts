@@ -4,6 +4,7 @@ export { default as MarkExtension } from './MarkExtension';
 
 // BlockExtensions
 export { default as Paragraph } from './Paragraph';
-export { default as Bold } from './Bold';
 
 // MarkExtensions
+export { default as Bold } from './Bold';
+export { default as Italic } from './Italic/index';

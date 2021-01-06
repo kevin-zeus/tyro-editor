@@ -25,7 +25,7 @@ export default class SchemaFactory {
   private _extensions: Extension[]
 
   constructor(extensions: Extension[]) {
-    this._extensions = extensions;
+    this._extensions = [...extensions];
   }
 
   getSchema() {
@@ -38,7 +38,6 @@ export default class SchemaFactory {
         nodes[extension.schema.type] = extension.schema;
       }
     });
-    console.log(nodes);
     return new Schema({ nodes, marks });
   }
 }

@@ -19,7 +19,7 @@ export default class BlockMenu extends Menu {
   maxHeight: number
 
   constructor(editorView: EditorView, extensions: Extension[], options?) {
-    super(editorView, extensions);
+    super(editorView);
 
     this.editorView = editorView;
     this.options = options;
@@ -33,6 +33,10 @@ export default class BlockMenu extends Menu {
     this.spacer = null;
 
     this.maxHeight = 0;
+  }
+
+  private _renderMenuItems(extensions: Extension[]) {
+    
   }
 }
 

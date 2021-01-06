@@ -7,8 +7,7 @@ import { history, undo, redo } from 'prosemirror-history';
 
 import { getWrapElement } from './utils';
 import SchemaFactory from './utils/SchemaFactory';
-
-import { BlockMenu } from './components/Menu';
+import MenuFactory from './utils/MenuFactory'
 
 import './style/index.css'
 
@@ -68,8 +67,8 @@ class Editor {
     });
 
     // 菜单初始化
-    const blockMenu = new BlockMenu(this.view, config.extensions);
-    this.wrapElement.appendChild(blockMenu.wrapper);
+    const menuFactory = new MenuFactory(this.view, this.wrapElement, config.extensions)
+    menuFactory.renderMenuBar()
 
     console.log('view ====>', this.view);
   }

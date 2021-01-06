@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 import Editor from '../../src/Editor';
-import { Paragraph, Bold } from '../../src/extensions/index';
+import { Paragraph, Bold, Italic } from '../../src/extensions/index';
 
 import './style.css'
 
@@ -12,6 +12,7 @@ const editorView = new Editor({
   extensions: [
     new Paragraph(),
     new Bold(),
+    new Italic(),
   ],
 });
 console.log(editorView);

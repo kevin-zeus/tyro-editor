@@ -1,6 +1,6 @@
-import { Node, Schema } from 'prosemirror-model'
-import { Plugin, EditorState, Transaction } from 'prosemirror-state'
-import { EditorView, NodeView } from 'prosemirror-view'
+import { Node } from 'prosemirror-model'
+import { EditorView } from 'prosemirror-view'
+import { MenuItem } from '../components/Menu'
 
 export interface IExtensionSchema {
   type: string;
@@ -44,5 +44,14 @@ export default class Extension {
     this._schema = value;
   }
 
+  private _icon?: string;
+  public get icon(): string {
+    return this._icon;
+  }
+  public set icon(value: string) {
+    this._icon = value;
+  }
+
+  registerMenu(editorView: EditorView): MenuItem|null { return null }
 }
 

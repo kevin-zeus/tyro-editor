@@ -1,7 +1,5 @@
-import { markActive } from '../../utils';
-import { TExtensionOptions } from '../Extension';
-import MarkExtension from '../MarkExtension';
-import { toggleMark } from 'prosemirror-commands';
+import { TExtensionOptions } from '../Extension'
+import MarkExtension from '../MarkExtension'
 
 export default class Blod extends MarkExtension {
   constructor(options: TExtensionOptions) {
@@ -10,7 +8,7 @@ export default class Blod extends MarkExtension {
 
   get schema() {
     if (this.customSchema) {
-      return this.customSchema;
+      return this.customSchema
     }
     return {
       type: 'bold',
@@ -24,12 +22,7 @@ export default class Blod extends MarkExtension {
     }
   }
 
-  active(state) {
-    return markActive(state.schema.marks.bold)(state);
+  get icon() {
+    return 'fa-bold'
   }
-
-  onClick(state, dispatch) {
-    toggleMark(state.schema.marks.bold)(state, dispatch);
-  }
-
 }
